@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Project454</string>
+    <color name="black">#000000</color>
+    <color name="lime">#00FF00</color>
+    <color name="almost_white">#eeeeee</color>
+
+</resources>

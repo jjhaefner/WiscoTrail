@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_options_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+
+    android:background="@drawable/cowprint"
+
+    tools:context="edu.wisc.ece.project454.MainActivity">
+
+    <!-- widgets have the necessary modifications copied into ALL widgets grouped @ top -->
+
+    <Button
+        android:textAllCaps = "false"
+        android:textColor="@color/almost_white"
+        android:background="@color/black"
+
+        android:layout_width="@dimen/menuBtnWidth"
+        android:layout_height="@dimen/menuBtnHeight"
+
+        android:text="How To Play"
+        android:id="@+id/LearnAboutTheTrailBtn"
+        android:onClick="learnAboutTrail"
+        android:layout_above="@+id/EndBtn"
+        android:layout_alignLeft="@+id/newGame"
+        android:layout_alignStart="@+id/newGame"
+        android:layout_marginBottom="13dp" />
+
+    <Button
+        android:textAllCaps="false"
+        android:textColor="@color/almost_white"
+        android:background="@color/black"
+
+        android:layout_width="@dimen/menuBtnWidth"
+        android:layout_height="@dimen/menuBtnHeight"
+
+        android:text="Load Game"
+        android:id="@+id/loadGame"
+        android:layout_marginBottom="11dp"
+        android:onClick="startTrail"
+        android:layout_above="@+id/LearnAboutTheTrailBtn"
+        android:layout_alignLeft="@+id/newGame"
+        android:layout_alignStart="@+id/newGame" />
+
+    <ImageView
+        android:layout_width="200dp"
+        app:srcCompat="@drawable/wisco_trail_line"
+        android:id="@+id/imageView"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:textAllCaps = "false"
+        android:textColor="@color/almost_white"
+        android:background="@color/black"
+
+        android:layout_width="@dimen/menuBtnWidth"
+        android:layout_height="@dimen/menuBtnHeight"
+
+        android:text="Quit"
+        android:id="@+id/EndBtn"
+        android:onClick="endGame"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/LearnAboutTheTrailBtn"
+        android:layout_alignStart="@+id/LearnAboutTheTrailBtn" />
+
+    <Button
+        android:textAllCaps = "false"
+        android:textColor="@color/almost_white"
+        android:background="@color/black"
+
+        android:layout_width="@dimen/menuBtnWidth"
+        android:layout_height="@dimen/menuBtnHeight"
+
+        android:text="New Game"
+        android:id="@+id/newGame"
+        android:layout_marginBottom="51dp"
+        android:onClick="startTrail"
+        android:layout_alignBottom="@+id/loadGame"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_trail_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/black"
+    tools:context="edu.wisc.ece.project454.TrailInfo">
+
+    <TextView
+        android:text="Can you make it to Green Bay to see the Packers game?\n
+          Travel 500 miles through Wisconsin's dairyland and see its most notable landmarks from a covered wagon! Battle fierce blizzards, humid summers, and drunk drivers to keep your party happy and healthy on what must be the longest road trip to a Packers Game ever.\n
+          To play, start by picking your party and buying supplies that you'll need throughout your journey.  You aren't able to earn money on the trail, so be sure not to spend all of it!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:id="@+id/textView46"
+        android:textColor="@color/almost_white"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="How to Play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:id="@+id/textView47"
+        android:textSize="28sp"
+        android:textColor="@color/almost_white" />
+
+    <TextView
+        android:text="Touch Screen to Continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView48"
+        android:textSize="24sp"
+        android:textColor="@color/almost_white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
