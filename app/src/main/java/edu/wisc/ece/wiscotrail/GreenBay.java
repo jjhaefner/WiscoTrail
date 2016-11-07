@@ -1,4 +1,4 @@
-package edu.wisc.ece.project454;
+package edu.wisc.ece.wiscotrail;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

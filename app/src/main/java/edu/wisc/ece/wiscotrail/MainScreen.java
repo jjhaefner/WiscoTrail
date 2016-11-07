@@ -1,4 +1,4 @@
-package edu.wisc.ece.project454;
+package edu.wisc.ece.wiscotrail;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -87,6 +87,26 @@ public class MainScreen extends AppCompatActivity {
         } //end if stmt for milestone-already-set
 
         TextView dateTV = (TextView)findViewById(R.id.date_field);
+        TextView mileageTV = (TextView)findViewById(R.id.mileage_field);
+        TextView weatherTV = (TextView)findViewById(R.id.weather_field);
+        TextView rationsTV = (TextView)findViewById(R.id.rations_field);
+        TextView paceTV = (TextView)findViewById(R.id.pace_field);
+        TextView moraleTV = (TextView)findViewById(R.id.morale_field);
+        TextView moneyTV = (TextView)findViewById(R.id.money_field);
+
+
+
+        dateTV.setText(UserVars.dateIntToString(UserVars.date));
+        //Set text must take String as input
+        mileageTV.setText(Integer.toString(UserVars.mileage));
+        //weather is a String
+        weatherTV.setText(UserVars.weather);
+        rationsTV.setText(Integer.toString(UserVars.rations));
+        //pace is a String
+        paceTV.setText(UserVars.pace);
+        //Morale is a string
+        moraleTV.setText(UserVars.morale);
+        moneyTV.setText("$" + UserVars.money);
 
 
 

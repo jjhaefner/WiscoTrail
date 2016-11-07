@@ -1,4 +1,4 @@
-package edu.wisc.ece.project454;
+package edu.wisc.ece.wiscotrail;
 
 /**
  * Created by Lewis on 11/7/2016.
@@ -19,11 +19,13 @@ public class UserVars {
     public static int num_oxen = 0;
     public static int num_clothes = 0;
     public static String weather = "fair";
+    public static String morale = "high";
+    public static String pace = "steady";
     public static int money = 0;
     public static int date = 1; //out of days in year (365) starting in 1840
     public static int ammunition = 0;
 
-    public String dateIntToString(int date){
+    public static String dateIntToString(int date){
 
         String return_date;
         String month = "January";

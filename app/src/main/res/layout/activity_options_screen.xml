@@ -12,7 +12,7 @@
 
     android:background="@drawable/cowprint"
 
-    tools:context="edu.wisc.ece.project454.OptionsScreen">
+    tools:context="edu.wisc.ece.wiscotrail.OptionsScreen">
 
     <!-- widgets have the necessary modifications copied into ALL widgets grouped @ top -->
 

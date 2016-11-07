@@ -9,6 +9,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/black"
-    tools:context="edu.wisc.ece.project454.TopTen">
+    tools:context="edu.wisc.ece.wiscotrail.TopTen">
 
 </RelativeLayout>
