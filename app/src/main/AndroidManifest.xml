@@ -22,9 +22,11 @@
         <activity android:name=".TrailInfo" />
         <activity android:name=".ToggleSound" />
         <activity android:name=".ManagementOptions" />
-        <activity android:name=".PickLeader" />
+        <activity android:name=".PickLeader"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".MainScreen" />
-        <activity android:name=".PickParty" />
+        <activity android:name=".PickParty"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".FarmNFleet" />
         <activity android:name=".DepartureMonth" />
         <activity android:name=".Shop" />
