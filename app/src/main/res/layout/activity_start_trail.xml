@@ -36,7 +36,7 @@
         android:layout_alignStart="@+id/textView2" />
 
     <Button
-        android:text="Be a banker from Boston"
+        android:text="Be a banker from Milwaukee"
         android:textColor="@color/almost_white"
         android:background="@color/black"
         android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
         android:onClick="beABanker"/>
 
     <Button
-        android:text="Be a carpenter from Ohio"
+        android:text="Be a Bartender from Oshkosh"
         android:textColor="@color/almost_white"
         android:background="@color/black"
         android:layout_width="wrap_content"
@@ -58,19 +58,31 @@
         android:layout_below="@+id/button2"
         android:layout_alignLeft="@+id/button2"
         android:layout_alignStart="@+id/button2"
-        android:onClick="beACarpenter"/>
+        android:onClick="beABartender"/>
 
     <Button
-        android:text="Be a farmer from Illinois"
+        android:text="Be a Dairy Farmer from Lodi"
+        android:textColor="@color/almost_white"
+        android:background="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button15"
+        android:layout_below="@+id/button3"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:onClick="beADairyFarmer" />
+
+    <Button
+        android:text="Be a Tunnel Operator from Sparta"
         android:textColor="@color/almost_white"
         android:background="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button4"
-        android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:onClick="beAFarmer"/>
+        android:onClick="beATunnelOperator"
+        android:layout_below="@+id/button15"
+        android:layout_alignLeft="@+id/button15"
+        android:layout_alignStart="@+id/button15" />
 
     <Button
         android:text="Find out the differences \nbetween these options"
@@ -80,8 +92,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
+        android:textAlignment="textStart"
         android:layout_below="@+id/button4"
         android:layout_alignLeft="@+id/button4"
-        android:layout_alignStart="@+id/button4"
-        android:textAlignment="textStart" />
+        android:layout_alignStart="@+id/button4" />
 </RelativeLayout>

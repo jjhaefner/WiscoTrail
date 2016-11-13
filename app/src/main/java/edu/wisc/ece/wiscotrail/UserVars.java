@@ -14,7 +14,8 @@ public class UserVars {
 
     public static int mileage = 0;
     public static int health = 0;
-    public static int rations = 0;
+    public static int rations = 2; //2 = generous, 1 = limited, 0 = barebones
+    public static int alcohol_gallons = 0;
     public static int food_lbs = 0;
     public static int num_oxen = 0;
     public static int num_clothes = 0;

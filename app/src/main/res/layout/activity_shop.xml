@@ -24,7 +24,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:text="Price:"
+        android:text="Price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView27"
@@ -49,8 +49,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView25"
         android:textSize="18sp"
-        android:layout_alignBaseline="@+id/editText10"
-        android:layout_alignBottom="@+id/editText10"
+        android:layout_alignBaseline="@+id/enterFood"
+        android:layout_alignBottom="@+id/enterFood"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -62,15 +62,15 @@
         android:textSize="18sp"
         android:layout_alignBaseline="@+id/textView22"
         android:layout_alignBottom="@+id/textView22"
-        android:layout_toRightOf="@+id/editText12"
-        android:layout_toEndOf="@+id/editText12" />
+        android:layout_toRightOf="@+id/enterAmmunition"
+        android:layout_toEndOf="@+id/enterAmmunition" />
 
     <EditText
         android:layout_width="@dimen/storeNumWidth"
         android:layout_height="@dimen/storeNumHeight"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText9"
+        android:id="@+id/enterOxen"
         android:hint="0"
         android:layout_alignBaseline="@+id/textView24"
         android:layout_alignBottom="@+id/textView24"
@@ -84,37 +84,37 @@
         android:layout_height="@dimen/storeNumHeight"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText10"
+        android:id="@+id/enterFood"
         android:hint="0"
         android:layout_alignBaseline="@+id/textView20"
         android:layout_alignBottom="@+id/textView20"
-        android:layout_alignLeft="@+id/editText9"
-        android:layout_alignStart="@+id/editText9" />
+        android:layout_alignLeft="@+id/enterAlcohol"
+        android:layout_alignStart="@+id/enterAlcohol" />
 
     <EditText
         android:layout_width="@dimen/storeNumWidth"
         android:layout_height="@dimen/storeNumHeight"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText11"
+        android:id="@+id/enterClothing"
         android:hint="0"
         android:layout_alignBaseline="@+id/textView21"
         android:layout_alignBottom="@+id/textView21"
-        android:layout_alignLeft="@+id/editText10"
-        android:layout_alignStart="@+id/editText10" />
+        android:layout_alignLeft="@+id/enterFood"
+        android:layout_alignStart="@+id/enterFood" />
 
     <EditText
         android:layout_width="@dimen/storeNumWidth"
         android:layout_height="@dimen/storeNumHeight"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText12"
+        android:id="@+id/enterAmmunition"
         android:hint="0"
         android:textSize="18sp"
         android:layout_alignBaseline="@+id/textView30"
         android:layout_alignBottom="@+id/textView30"
-        android:layout_alignLeft="@+id/editText11"
-        android:layout_alignStart="@+id/editText11" />
+        android:layout_alignLeft="@+id/enterClothing"
+        android:layout_alignStart="@+id/enterClothing" />
 
     <Button
         android:text="Done"
@@ -125,38 +125,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="goNext"/>
-
-    <TextView
-        android:text="What would you like to buy?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
-        android:id="@+id/textView13"
-        android:textSize="20sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="Item:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/textView27"
-        android:textSize="20sp"
-        android:layout_above="@+id/editText9"
-        android:layout_alignRight="@+id/textView19"
-        android:layout_alignEnd="@+id/textView19" />
-
-    <TextView
-        android:text="Oxen:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
-        android:id="@+id/textView19"
-        android:textSize="18sp"
-        android:layout_below="@+id/textView13"
-        android:layout_alignLeft="@+id/textView13"
-        android:layout_alignStart="@+id/textView13" />
 
     <TextView
         android:text="Food:"
@@ -174,7 +142,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView22"
         android:textSize="18sp"
-        android:layout_below="@+id/editText11"
+        android:layout_below="@+id/enterClothing"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="32dp" />
@@ -186,9 +154,85 @@
         android:id="@+id/textView21"
         android:textSize="18sp"
         android:layout_marginTop="31dp"
-        android:layout_below="@+id/editText10"
+        android:layout_below="@+id/enterFood"
         android:layout_alignRight="@+id/textView22"
         android:layout_alignEnd="@+id/textView22" />
+
+    <TextView
+        android:text="Total:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button10"
+        android:layout_alignLeft="@+id/textView21"
+        android:layout_alignStart="@+id/textView21"
+        android:layout_marginBottom="13dp"
+        android:id="@+id/textView49"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/total"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/textView49"
+        android:layout_alignBottom="@+id/textView49"
+        android:layout_alignLeft="@+id/enterAmmunition"
+        android:layout_alignStart="@+id/enterAmmunition" />
+
+    <TextView
+        android:text="What would you like to buy?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView13"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView27"
+        android:textSize="20sp"
+        android:layout_below="@+id/textView13"
+        android:layout_alignRight="@+id/textView19"
+        android:layout_alignEnd="@+id/textView19"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:text="Oxen:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView19"
+        android:textSize="18sp"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/textView27"
+        android:layout_alignLeft="@+id/textView13"
+        android:layout_alignStart="@+id/textView13" />
+
+    <TextView
+        android:text="Alcohol:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/enterFood"
+        android:layout_alignRight="@+id/textView20"
+        android:layout_alignEnd="@+id/textView20"
+        android:layout_marginBottom="29dp"
+        android:id="@+id/textView52"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_width="@dimen/storeNumWidth"
+        android:layout_height="@dimen/storeNumHeight"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/enterAlcohol"
+        android:hint="0"
+        android:layout_alignBaseline="@+id/textView52"
+        android:layout_alignBottom="@+id/textView52"
+        android:layout_alignLeft="@+id/enterOxen"
+        android:layout_alignStart="@+id/enterOxen" />
 
 
 </RelativeLayout>

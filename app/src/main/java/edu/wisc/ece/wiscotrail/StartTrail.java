@@ -14,19 +14,27 @@ public class StartTrail extends AppCompatActivity {
     }
 
     public void beABanker(View view){
-        //TODO: Save variables for money and status
+        UserVars.money = 2000;
         Intent intent = new Intent(this, PickLeader.class);
         startActivity(intent);
     }
 
-    public void beACarpenter(View view){
-        //TODO: Save variables for money and status
+    public void beATunnelOperator(View view){
+        UserVars.money = 600;
         Intent intent = new Intent(this, PickLeader.class);
         startActivity(intent);
     }
 
-    public void beAFarmer(View view){
-        //TODO: Save variables for money and status
+    public void beADairyFarmer(View view){
+        UserVars.food_lbs = 500;
+        UserVars.num_oxen = 2;
+        UserVars.money = 700;
+        Intent intent = new Intent(this, PickLeader.class);
+        startActivity(intent);
+    }
+    public void beABartender(View view){
+        UserVars.alcohol_gallons = 10;
+        UserVars.money = 1200;
         Intent intent = new Intent(this, PickLeader.class);
         startActivity(intent);
     }
