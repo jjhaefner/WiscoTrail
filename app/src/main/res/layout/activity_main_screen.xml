@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.wisc.ece.wiscotrail.MainScreen">
 
     <TextView
@@ -15,205 +12,259 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView34"
-        android:layout_marginRight="106dp"
-        android:layout_marginEnd="106dp"
-        android:layout_alignBaseline="@+id/textView33"
-        android:layout_alignBottom="@+id/textView33"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        app:layout_constraintBottom_toTopOf="@+id/textView33"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:text="Date:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView36"
-        android:layout_above="@+id/textView34"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView38"
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:text="Mileage:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
         android:id="@+id/textView33"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView35"
-        android:layout_alignLeft="@+id/textView34"
-        android:layout_alignStart="@+id/textView34"
-        android:id="@+id/textView37" />
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView35"
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:text="Pace:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView37"
-        android:layout_toRightOf="@+id/textView37"
-        android:layout_toEndOf="@+id/textView37"
-        android:id="@+id/textView38" />
+        android:id="@+id/textView38"
+        app:layout_constraintBottom_toTopOf="@+id/textView34"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:text="Morale: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView35"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="12dp"
-        android:id="@+id/textView39" />
+        android:id="@+id/textView39"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView40"
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:text="Money:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView39"
-        android:layout_alignLeft="@+id/textView37"
-        android:layout_alignStart="@+id/textView37"
-        android:id="@+id/textView40" />
+        android:id="@+id/textView40"
+        app:layout_constraintBottom_toTopOf="@+id/viewSuppliesBtn"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp" />
 
     <Button
-        android:text="Try to Trade with Someone"
-        android:layout_width="175dp"
-        android:layout_height="50dp"
-        android:layout_alignBottom="@+id/button12"
-        android:layout_toRightOf="@+id/button12"
-        android:layout_toEndOf="@+id/button12"
+        android:text="Trade"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:id="@+id/button13"
-        android:onClick="tryTrading"/>
+        android:onClick="tryTrading"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/button12"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button11"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toRightOf="@+id/button12"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.12" />
 
     <TextView
         android:text="Rations: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
         android:id="@+id/textView35"
-        android:layout_below="@+id/textView33"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        app:layout_constraintBottom_toTopOf="@+id/textView39"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp" />
 
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView36"
-        android:layout_toRightOf="@+id/textView36"
-        android:layout_toEndOf="@+id/textView36"
-        android:id="@+id/date_field" />
+        android:id="@+id/date_field"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView40"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/pace_field"
+        android:layout_marginBottom="4dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView34"
-        android:layout_toRightOf="@+id/textView40"
-        android:layout_toEndOf="@+id/textView40"
-        android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
-        android:id="@+id/weather_field" />
+        android:id="@+id/weather_field"
+        app:layout_constraintBottom_toTopOf="@+id/mileage_field"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView40"
+        android:layout_marginLeft="24dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView35"
-        android:layout_toRightOf="@+id/textView33"
-        android:layout_toEndOf="@+id/textView33"
-        android:id="@+id/rations_field" />
+        android:id="@+id/rations_field"
+        app:layout_constraintBottom_toTopOf="@+id/morale_field"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView40"
+        android:layout_marginLeft="24dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView39"
-        android:layout_alignRight="@+id/rations_field"
-        android:layout_alignEnd="@+id/rations_field"
-        android:id="@+id/morale_field" />
+        android:id="@+id/morale_field"
+        app:layout_constraintBottom_toTopOf="@+id/money_field"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView40"
+        android:layout_marginLeft="24dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView40"
-        android:layout_toRightOf="@+id/textView40"
-        android:layout_toEndOf="@+id/textView40"
-        android:id="@+id/money_field" />
+        android:id="@+id/money_field"
+        app:layout_constraintLeft_toRightOf="@+id/textView40"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/viewSuppliesBtn"
+        android:layout_marginBottom="4dp" />
 
     <Button
         android:text="Change Travel Settings"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:id="@+id/button14"
-        android:layout_width="375dp"
         android:onClick="travelSettings"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/button11"
-        android:layout_alignStart="@+id/button11" />
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="8dp"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp" />
 
     <Button
-        android:text="Hunt for Food"
-        android:layout_width="175dp"
+        android:text="Hunt"
         android:id="@+id/button12"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:onClick="goHunting"
-        android:layout_above="@+id/button14"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        app:layout_constraintRight_toLeftOf="@+id/partyHealthBtn"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/button14"
+        app:layout_constraintTop_toBottomOf="@+id/button11"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.75"
+        android:layout_width="0dp" />
 
     <Button
         android:text="Continue on!"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:id="@+id/button11"
-        android:layout_height="65dp"
+        android:layout_height="wrap_content"
         android:onClick="continueOn"
-        android:layout_above="@+id/button13"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button14"
+        android:layout_marginBottom="48dp" />
 
     <Button
-        android:text="View Supplies"
-        android:layout_width="wrap_content"
+        android:text="Supplies"
         android:layout_height="wrap_content"
         android:id="@+id/viewSuppliesBtn"
-        android:layout_below="@+id/textView39"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="viewSupplies"/>
+        android:onClick="viewSupplies"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button11"
+        android:layout_width="0dp"
+        app:layout_constraintRight_toLeftOf="@+id/partyHealthBtn"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mileage_field"
-        android:layout_above="@+id/textView35"
-        android:layout_toRightOf="@+id/textView35"
-        android:layout_toEndOf="@+id/textView35" />
+        app:layout_constraintBottom_toTopOf="@+id/rations_field"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView40"
+        android:layout_marginLeft="24dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pace_field"
-        android:layout_alignBaseline="@+id/textView38"
-        android:layout_alignBottom="@+id/textView38"
-        android:layout_toRightOf="@+id/textView38"
-        android:layout_toEndOf="@+id/textView38" />
+        app:layout_constraintBottom_toTopOf="@+id/weather_field"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toRightOf="@+id/textView40"
+        android:layout_marginLeft="24dp" />
 
     <Button
-        android:text="Party Health"
+        android:text="Health"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/partyHealthBtn"
+        android:onClick="viewPartyHealth"
+        app:layout_constraintBottom_toTopOf="@+id/button11"
+        app:layout_constraintRight_toRightOf="@+id/button11" />
+
+    <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView40"
-        android:layout_toRightOf="@+id/textView37"
-        android:layout_toEndOf="@+id/textView37"
-        android:id="@+id/partyHealthBtn"
-        android:onClick="viewPartyHealth"/>
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="20dp"
+        tools:layout_editor_absoluteX="0dp" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
