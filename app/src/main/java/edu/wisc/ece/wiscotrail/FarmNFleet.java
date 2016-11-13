@@ -21,6 +21,6 @@ public class FarmNFleet extends AppCompatActivity {
     public void goShop(View view){
         Intent intent = new Intent(this, Shop.class);
         startActivity(intent);
-        
+
     }
 }
