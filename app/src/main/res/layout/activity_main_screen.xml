@@ -79,16 +79,6 @@
         android:id="@+id/textView40" />
 
     <Button
-        android:text="Hunt for Food"
-        android:layout_width="175dp"
-        android:layout_below="@+id/button11"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button12"
-        android:layout_height="50dp"
-        android:onClick="goHunting"/>
-
-    <Button
         android:text="Try to Trade with Someone"
         android:layout_width="175dp"
         android:layout_height="50dp"
@@ -108,47 +98,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="Supplies:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView39"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="13dp"
-        android:id="@+id/textView44" />
-
-    <TextView
-        android:text="Health:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView44"
-        android:layout_toRightOf="@+id/textView37"
-        android:layout_toEndOf="@+id/textView37"
-        android:id="@+id/textView45" />
-
-    <Button
-        android:text="Change Travel Settings"
-        android:layout_height="45dp"
-        android:layout_below="@+id/button12"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button14"
-        android:layout_width="375dp"
-        android:onClick="travelSettings"/>
-
-
-    <Button
-        android:text="Continue on!"
-        android:layout_width="350dp"
-        android:layout_marginTop="96dp"
-        android:id="@+id/button11"
-        android:layout_below="@+id/textView44"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_height="65dp"
-        android:onClick="continueOn"/>
-
 
     <TextView
         android:text="TextView"
@@ -158,15 +107,6 @@
         android:layout_toRightOf="@+id/textView36"
         android:layout_toEndOf="@+id/textView36"
         android:id="@+id/date_field" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView35"
-        android:layout_toRightOf="@+id/textView44"
-        android:layout_toEndOf="@+id/textView44"
-        android:id="@+id/mileage_field" />
 
     <TextView
         android:text="TextView"
@@ -192,15 +132,6 @@
         android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView38"
-        android:layout_toRightOf="@+id/textView45"
-        android:layout_toEndOf="@+id/textView45"
-        android:id="@+id/pace_field" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView39"
         android:layout_alignRight="@+id/rations_field"
         android:layout_alignEnd="@+id/rations_field"
@@ -214,6 +145,75 @@
         android:layout_toRightOf="@+id/textView40"
         android:layout_toEndOf="@+id/textView40"
         android:id="@+id/money_field" />
+
+    <Button
+        android:text="Change Travel Settings"
+        android:layout_height="45dp"
+        android:id="@+id/button14"
+        android:layout_width="375dp"
+        android:onClick="travelSettings"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button11"
+        android:layout_alignStart="@+id/button11" />
+
+    <Button
+        android:text="Hunt for Food"
+        android:layout_width="175dp"
+        android:id="@+id/button12"
+        android:layout_height="50dp"
+        android:onClick="goHunting"
+        android:layout_above="@+id/button14"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Continue on!"
+        android:layout_width="350dp"
+        android:id="@+id/button11"
+        android:layout_height="65dp"
+        android:onClick="continueOn"
+        android:layout_above="@+id/button13"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="View Supplies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewSuppliesBtn"
+        android:layout_below="@+id/textView39"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="viewSupplies"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mileage_field"
+        android:layout_above="@+id/textView35"
+        android:layout_toRightOf="@+id/textView35"
+        android:layout_toEndOf="@+id/textView35" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pace_field"
+        android:layout_alignBaseline="@+id/textView38"
+        android:layout_alignBottom="@+id/textView38"
+        android:layout_toRightOf="@+id/textView38"
+        android:layout_toEndOf="@+id/textView38" />
+
+    <Button
+        android:text="Party Health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView40"
+        android:layout_toRightOf="@+id/textView37"
+        android:layout_toEndOf="@+id/textView37"
+        android:id="@+id/partyHealthBtn"
+        android:onClick="viewPartyHealth"/>
 
 
 </RelativeLayout>

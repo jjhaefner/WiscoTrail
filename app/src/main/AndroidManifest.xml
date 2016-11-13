@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.wisc.ece.wiscotrail">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".StartTrail" />
         <activity android:name=".TrailInfo" />
         <activity android:name=".ToggleSound" />
@@ -45,8 +44,9 @@
         <activity android:name=".TravelSettings" />
         <activity android:name=".Trade" />
         <activity android:name=".EndGame" />
-        <activity android:name=".TrailInfo1"/>
+        <activity android:name=".TrailInfo1" />
+        <activity android:name=".ViewSupplies" />
+        <activity android:name=".PartyHealth"></activity>
     </application>
-
 
 </manifest>
