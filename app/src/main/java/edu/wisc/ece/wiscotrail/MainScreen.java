@@ -131,4 +131,14 @@ public class MainScreen extends AppCompatActivity {
         Intent intent = new Intent(this, Trade.class);
         startActivity(intent);
     }
+
+    public void viewSupplies(View view){
+        Intent intent = new Intent(this, ViewSupplies.class);
+        startActivity(intent);
+    }
+
+    public void viewPartyHealth(View view){
+        Intent intent = new Intent(this, PartyHealth.class);
+        startActivity(intent);
+    }
 }
