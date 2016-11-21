@@ -20,14 +20,14 @@ public class PickLeader extends AppCompatActivity {
     }
 
     public void goNext(View view){
-        if(nameField.getText().length() > 0) {
-            UserVars.partyLeader = nameField.getText().toString();
+        if(nameField.getText().toString().trim().length() > 0) {
+            UserVars.partyLeader = nameField.getText().toString().trim();
             Intent intent = new Intent(this, PickParty.class);
             startActivity(intent);
         }
         else{
             Toast.makeText(getApplicationContext(),
-                    "Please enter in a name!", Toast.LENGTH_SHORT).show();
+                    "C'mon, you have to have a name!", Toast.LENGTH_SHORT).show();
         }
     }
 }

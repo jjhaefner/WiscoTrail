@@ -6,11 +6,11 @@ package edu.wisc.ece.wiscotrail;
 
 public class UserVars {
 
-    public static String partyLeader = "name";
-    public static String partyMember2 = "name";
-    public static String partyMember3 = "name";
-    public static String partyMember4 = "name";
-    public static String partyMember5 = "name";
+    public static String partyLeader = "Bucky";
+    public static String partyMember1 = "Becky";
+    public static String partyMember2 = "Lori";
+    public static String partyMember3 = "Xinyu";
+    public static String partyMember4 = "Morrow";
 
     public static int mileage = 0;
     public static int health = 0;
@@ -23,7 +23,7 @@ public class UserVars {
     public static String morale = "high";
     public static String pace = "steady";
     public static int money = 0;
-    public static int date = 1; //out of days in year (365) starting in 1840
+    public static int date = 1; //out of days in year (365) starting in 1880
     public static int ammunition = 0;
 
     public static String dateIntToString(int date){
