@@ -12,26 +12,42 @@ public class UserVars {
     public static String partyMember3 = "Xinyu";
     public static String partyMember4 = "Morrow";
 
+    public static String partyLeader_health = "healthy";
+    public static String partyMember1_health = "healthy";
+    public static String partyMember2_health = "healthy";
+    public static String partyMember3_health = "healthy";
+    public static String partyMember4_health = "healthy";
+
     public static int mileage = 0;
-    public static int health = 0;
-    public static int rations = 2; //2 = generous, 1 = limited, 0 = barebones
+    public static String rations = "generous"; //2 = generous, 1 = limited, 0 = barebones
     public static int alcohol_gallons = 0;
     public static int food_lbs = 0;
     public static int num_oxen = 0;
     public static int num_clothes = 0;
-    public static String weather = "fair";
+    public static String weather = "fair"; //"fair", "cloudy", "raining", "snowing", "blizzard", "frigid", "storming", "apocalyptic"
     public static String morale = "high";
-    public static String pace = "steady";
+    public static String pace = "steady"; //"steady" or "crawling" or "my grandma could walk faster"
     public static int money = 0;
     public static int date = 1; //out of days in year (365) starting in 1880
     public static int ammunition = 0;
+    public static int MILES_MINNEAPOLIS = 0;
+    public static int MILES_MISSISSIPPI_RIVER = 20;
+    public static int MILES_EAU_CLAIRE = 40;
+    public static int MILES_DEVILS_LAKE = 135;
+    public static int MILES_WISCONSIN_RIVER = 180;
+    public static int MILES_MADISON = 215;
+    public static int MILES_NEW_GLARUS = 250;
+    public static int MILES_ROCK_RIVER = 310;
+    public static int MILES_MILWAUKEE = 375;
+    public static int MILES_SHEBOYGAN = 420;
+    public static int MILES_GREEN_BAY = 470;
 
     public static String dateIntToString(int date){
 
         String return_date;
         String month = "January";
         int day = 1;
-        int year = 1840;
+        int year = 1880;
         year = year + (date/365);
         date = date % 365;
         if(date > 0 && date <= 31) {

@@ -21,69 +21,57 @@ public class MainScreen extends AppCompatActivity {
 
         if(!milestoneSet) {
 
-            switch (UserVars.mileage) {
 
-                case 0: {
+
+                if(UserVars.mileage == UserVars.MILES_MINNEAPOLIS) {
                     Intent intent = new Intent(this, Minneapolis.class);
                     startActivity(intent);
-                    break;
+
                 }
-                case 20: {
+                else if(UserVars.mileage == UserVars.MILES_MISSISSIPPI_RIVER) {
                     Intent intent = new Intent(this, MississippiRiver.class);
                     startActivity(intent);
-                    break;
                 }
-                case 40: {
+                else if(UserVars.mileage == UserVars.MILES_EAU_CLAIRE) {
                     Intent intent = new Intent(this, EauClaire.class);
                     startActivity(intent);
-                    break;
                 }
-                case 135: {
+                else if(UserVars.mileage == UserVars.MILES_DEVILS_LAKE) {
                     Intent intent = new Intent(this, DevilsLake.class);
                     startActivity(intent);
-                    break;
                 }
-                case 180: {
+                else if(UserVars.mileage == UserVars.MILES_WISCONSIN_RIVER) {
                     Intent intent = new Intent(this, WisconsinRiver.class);
                     startActivity(intent);
-                    break;
                 }
-                case 215: {
+                else if(UserVars.mileage == UserVars.MILES_MADISON) {
                     Intent intent = new Intent(this, Madison.class);
                     startActivity(intent);
-                    break;
                 }
-                case 250: {
+                else if(UserVars.mileage == UserVars.MILES_NEW_GLARUS) {
                     Intent intent = new Intent(this, NewGlarus.class);
                     startActivity(intent);
-                    break;
                 }
-                case 310: {
+                else if(UserVars.mileage == UserVars.MILES_ROCK_RIVER) {
                     Intent intent = new Intent(this, RockRiver.class);
                     startActivity(intent);
-                    break;
                 }
-                case 375: {
+                else if(UserVars.mileage == UserVars.MILES_MILWAUKEE) {
                     Intent intent = new Intent(this, Milwaukee.class);
                     startActivity(intent);
-                    break;
                 }
-                case 420: {
+                else if(UserVars.mileage == UserVars.MILES_SHEBOYGAN) {
                     Intent intent = new Intent(this, Sheboygan.class);
                     startActivity(intent);
-                    break;
                 }
-                case 470: {
+                else if(UserVars.mileage == UserVars.MILES_GREEN_BAY) {
                     Intent intent = new Intent(this, GreenBay.class);
                     startActivity(intent);
-                    break;
                 }
-                default: {
+                else {
                     milestoneSet = true;
                 }
 
-
-            } //end case stmt
         } //end if stmt for milestone-already-set
 
         TextView dateTV = (TextView)findViewById(R.id.date_field);
@@ -101,7 +89,7 @@ public class MainScreen extends AppCompatActivity {
         mileageTV.setText(Integer.toString(UserVars.mileage));
         //weather is a String
         weatherTV.setText(UserVars.weather);
-        rationsTV.setText(Integer.toString(UserVars.rations));
+        rationsTV.setText(UserVars.rations);
         //pace is a String
         paceTV.setText(UserVars.pace);
         //Morale is a string
