@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
+import java.util.Random;
+
 public class TravelAnimation extends AppCompatActivity {
 
     @Override
@@ -12,11 +14,114 @@ public class TravelAnimation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_animation);
         //reset the milestone marker once mileage has been increased
-         changeMileage();
-         
+        changeMileage();
+        calculateMorale();
+        calculateFood();
 
         //increase the date
         UserVars.date += 1;
+
+
+
+
+
+        //TODO: random event generator!!!
+    }
+
+    public static void determineWeather(Random rand){
+        int randNum = rand.nextInt(100);
+
+        //if Dec, Jan or Feb
+        if(UserVars.date < 60 || UserVars.date >= 334){
+            if(randNum < 5){
+                UserVars.weather = "fair";
+            }
+            else if(randNum < 35){
+                UserVars.weather = "cloudy";
+            }
+            else if(randNum < 65){
+                UserVars.weather = "snowing";
+            }
+            else if(randNum < 75){
+                UserVars.weather = "blizzard";
+            }
+            else if(randNum < 97){
+                UserVars.weather = "frigid";
+            }
+            else{
+                UserVars.weather = "apocalyptic";
+            }
+        }
+        //if March, April or May
+        else if(UserVars.date < 151){
+            //TODO: change based on spring
+            if(randNum < 5){
+                UserVars.weather = "fair";
+            }
+            else if(randNum < 35){
+                UserVars.weather = "cloudy";
+            }
+            else if(randNum < 65){
+                UserVars.weather = "snowing";
+            }
+            else if(randNum < 75){
+                UserVars.weather = "blizzard";
+            }
+            else if(randNum < 97){
+                UserVars.weather = "frigid";
+            }
+            else{
+                UserVars.weather = "apocalyptic";
+            }
+        }
+        //if June, July or August
+        else if(UserVars.date < 243){
+            //TODO: change based on summer
+            if(randNum < 5){
+                UserVars.weather = "fair";
+            }
+            else if(randNum < 35){
+                UserVars.weather = "cloudy";
+            }
+            else if(randNum < 65){
+                UserVars.weather = "snowing";
+            }
+            else if(randNum < 75){
+                UserVars.weather = "blizzard";
+            }
+            else if(randNum < 97){
+                UserVars.weather = "frigid";
+            }
+            else{
+                UserVars.weather = "apocalyptic";
+            }
+        }
+        //if September, October or November
+        else{
+            //TODO: change based on autumn
+            if(randNum < 5){
+                UserVars.weather = "fair";
+            }
+            else if(randNum < 35){
+                UserVars.weather = "cloudy";
+            }
+            else if(randNum < 65){
+                UserVars.weather = "snowing";
+            }
+            else if(randNum < 75){
+                UserVars.weather = "blizzard";
+            }
+            else if(randNum < 97){
+                UserVars.weather = "frigid";
+            }
+            else{
+                UserVars.weather = "apocalyptic";
+            }
+
+        }
+    }
+
+    public static void calculateFood(){
         if(UserVars.rations.equals("generous")){
             UserVars.food_lbs -= 10;
         }
@@ -26,12 +131,6 @@ public class TravelAnimation extends AppCompatActivity {
         else {
             UserVars.food_lbs -= 3;
         }
-
-
-
-
-
-        //TODO: random event generator!!!
     }
 
     public static void calculateMorale(){

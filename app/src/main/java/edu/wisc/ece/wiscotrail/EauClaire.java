@@ -1,7 +1,9 @@
 package edu.wisc.ece.wiscotrail;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 
 public class EauClaire extends AppCompatActivity {
 
@@ -11,5 +13,12 @@ public class EauClaire extends AppCompatActivity {
         setContentView(R.layout.activity_eau_claire);
         MainScreen.milestoneSet = true;
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        Intent intent = new Intent(this, MainScreen.class);
+        startActivity(intent);
+        return super.onTouchEvent(event);
     }
 }
