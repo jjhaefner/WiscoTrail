@@ -60,7 +60,7 @@
 
     <Button
         android:text="Buy More!"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/button8"
         android:onClick="goShop"
@@ -74,7 +74,7 @@
 
     <Button
         android:text="Finish shopping"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/button9"
         android:onClick="goNext"
