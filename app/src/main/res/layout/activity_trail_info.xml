@@ -11,37 +11,63 @@
     android:background="@color/black"
     tools:context="edu.wisc.ece.wiscotrail.TrailInfo">
 
-    <TextView
-        android:text="Can you make it to Green Bay to see the Packers game?\n
-          Travel 500 miles through Wisconsin's dairyland and see its most notable landmarks from a covered wagon! Battle fierce blizzards, humid summers, and drunk drivers to keep your party happy and healthy on what must be the longest road trip to a Packers Game ever.\n
-          To play, start by picking your party and buying supplies that you'll need throughout your journey.  You aren't able to earn money on the trail, so be sure not to spend all of it!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:id="@+id/textView46"
-        android:textColor="@color/almost_white"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="18sp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-    <TextView
-        android:text="How to Play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
-        android:id="@+id/textView47"
-        android:textSize="28sp"
-        android:textColor="@color/almost_white" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-    <TextView
-        android:text="Touch Screen to Continue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView48"
-        android:textSize="24sp"
-        android:textColor="@color/almost_white"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:text="How to Play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:id="@+id/textView47"
+                android:textSize="28sp"
+                android:textColor="@color/almost_white"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Can you make it to Green Bay to see the Packers game?\n
+                  Travel 500 miles through Wisconsin's dairyland and see its most notable landmarks from a covered wagon! Battle fierce blizzards, humid summers, and drunk drivers to keep your party happy and healthy on what must be the longest road trip to a Packers Game ever.\n
+                  To play, start by picking your party and buying supplies that you'll need throughout your journey.  You aren't able to earn money on the trail, so be sure not to spend all of it!
+
+                  asdfjasdfjasdfadfasdsf\n\n\n
+
+                  asdfjkasdfjasdf\n\n\n
+
+                  asdflkjlasdlkfjadsflkjdasflkjadsf\n\n\n
+
+                  asdflkjkasdflkjasdf\n\n
+                  adsffhkjsdlkjjkasdff\n
+
+                  asdfk;jasdfslkj;sadf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:id="@+id/textView46"
+                android:textColor="@color/almost_white"
+                android:textSize="18sp"
+                android:layout_above="@+id/textView48"
+                android:layout_marginBottom="14dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <Button
+                android:text="Back to Start Screen!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button7"
+                android:onClick="backToStart" />
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

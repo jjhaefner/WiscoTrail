@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 public class TrailInfo extends AppCompatActivity {
 
@@ -13,10 +14,7 @@ public class TrailInfo extends AppCompatActivity {
         setContentView(R.layout.activity_trail_info);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Intent intent = new Intent(this, TrailInfo1.class);
-        startActivity(intent);
-        return super.onTouchEvent(event);
+    public void backToStart(View view){
+        finish();
     }
 }
