@@ -12,6 +12,9 @@ public class UserVars {
     public static String partyMember3 = "Xinyu";
     public static String partyMember4 = "Morrow";
 
+    // health options: healthy, broken arm, broken leg,
+    // alcohol poisoning, cholera, dysentery, measles
+    // typhoid, tired, dead
     public static String partyLeader_health = "healthy";
     public static String partyMember1_health = "healthy";
     public static String partyMember2_health = "healthy";
@@ -20,7 +23,7 @@ public class UserVars {
 
     public static int mileage = 0;
     public static String rations = "generous"; //2 = generous, 1 = limited, 0 = barebones
-    public static int alcohol_gallons = 0;
+    public static double alcohol_gallons = 0;
     public static int food_lbs = 0;
     public static int num_oxen = 0;
     public static int num_clothes = 0;

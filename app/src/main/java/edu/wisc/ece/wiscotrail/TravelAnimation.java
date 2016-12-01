@@ -1,10 +1,12 @@
 package edu.wisc.ece.wiscotrail;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class TravelAnimation extends AppCompatActivity {
@@ -13,10 +15,15 @@ public class TravelAnimation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_animation);
+
+        Random myRandom = new Random();
         //reset the milestone marker once mileage has been increased
         changeMileage();
         calculateMorale();
         calculateFood();
+        calculateAlcohol();
+        determineWeather(myRandom);
+        determineHealth(myRandom, TravelAnimation.this);
 
         //increase the date
         UserVars.date += 1;
@@ -26,6 +33,21 @@ public class TravelAnimation extends AppCompatActivity {
 
 
         //TODO: random event generator!!!
+    }
+
+
+    // health options: healthy, broken arm, broken leg,
+    // alcohol poisoning, cholera, dysentery, measles
+    // typhoid, tired, dead
+    public static void determineHealth(Random rand, Activity activity) {
+        //This method is too long and complicated to put
+        // into this activity so it exists in Health.java
+        Health.determineHealth(rand, activity);
+    }
+
+    public static void determineRandomEvent(Random rand) {
+        int randNum = rand.nextInt(100);
+
     }
 
     public static void determineWeather(Random rand){
@@ -54,17 +76,23 @@ public class TravelAnimation extends AppCompatActivity {
         }
         //if March, April or May
         else if(UserVars.date < 151){
-            //TODO: change based on spring
-            if(randNum < 5){
+
+            if(randNum < 30){
                 UserVars.weather = "fair";
             }
-            else if(randNum < 35){
+            else if(randNum < 45){
                 UserVars.weather = "cloudy";
             }
-            else if(randNum < 65){
+            else if(randNum < 63){
+                UserVars.weather = "raining";
+            }
+            else if(randNum < 81){
+                UserVars.weather = "storming";
+            }
+            else if(randNum < 88){
                 UserVars.weather = "snowing";
             }
-            else if(randNum < 75){
+            else if(randNum < 92){
                 UserVars.weather = "blizzard";
             }
             else if(randNum < 97){
@@ -76,21 +104,18 @@ public class TravelAnimation extends AppCompatActivity {
         }
         //if June, July or August
         else if(UserVars.date < 243){
-            //TODO: change based on summer
-            if(randNum < 5){
+
+            if(randNum < 45){
                 UserVars.weather = "fair";
             }
-            else if(randNum < 35){
+            else if(randNum < 60){
                 UserVars.weather = "cloudy";
             }
-            else if(randNum < 65){
-                UserVars.weather = "snowing";
-            }
-            else if(randNum < 75){
-                UserVars.weather = "blizzard";
+            else if(randNum < 80){
+                UserVars.weather = "raining";
             }
             else if(randNum < 97){
-                UserVars.weather = "frigid";
+                UserVars.weather = "storming";
             }
             else{
                 UserVars.weather = "apocalyptic";
@@ -98,17 +123,23 @@ public class TravelAnimation extends AppCompatActivity {
         }
         //if September, October or November
         else{
-            //TODO: change based on autumn
-            if(randNum < 5){
+
+            if(randNum < 30){
                 UserVars.weather = "fair";
             }
-            else if(randNum < 35){
+            else if(randNum < 45){
                 UserVars.weather = "cloudy";
             }
-            else if(randNum < 65){
+            else if(randNum < 63){
+                UserVars.weather = "raining";
+            }
+            else if(randNum < 81){
+                UserVars.weather = "storming";
+            }
+            else if(randNum < 88){
                 UserVars.weather = "snowing";
             }
-            else if(randNum < 75){
+            else if(randNum < 92){
                 UserVars.weather = "blizzard";
             }
             else if(randNum < 97){
@@ -121,15 +152,39 @@ public class TravelAnimation extends AppCompatActivity {
         }
     }
 
+    public static void calculateAlcohol(){
+        if(UserVars.food_lbs == 0){
+            if(UserVars.alcohol_gallons > 0.5)
+                UserVars.alcohol_gallons-= 0.5;
+            else
+                UserVars.alcohol_gallons = 0;
+        }
+        else if(UserVars.rations.equals("barebones")){
+            if(UserVars.alcohol_gallons > 0.2)
+                UserVars.alcohol_gallons-= 0.2;
+            else
+                UserVars.alcohol_gallons = 0;
+        }
+    }
+
     public static void calculateFood(){
         if(UserVars.rations.equals("generous")){
-            UserVars.food_lbs -= 10;
+            if(UserVars.food_lbs >= 10)
+                UserVars.food_lbs -= 10;
+            else
+                UserVars.food_lbs = 0;
         }
         else if(UserVars.rations.equals("limited")){
-            UserVars.food_lbs -= 6;
+            if(UserVars.food_lbs >= 6)
+                UserVars.food_lbs -= 6;
+            else
+                UserVars.food_lbs = 0;
         }
         else {
-            UserVars.food_lbs -= 3;
+            if(UserVars.food_lbs >= 3)
+                UserVars.food_lbs -= 3;
+            else
+                UserVars.food_lbs = 0;
         }
     }
 

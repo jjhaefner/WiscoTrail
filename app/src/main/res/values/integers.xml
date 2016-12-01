@@ -1,7 +1,7 @@
 <resources>
     <integer name="oxen_price">60</integer>
     <integer name="alcohol_price">2</integer>
-    <integer name="food_price">1</integer>
+    <integer name="food_price">5</integer>
     <integer name="clothing_price">8</integer>
     <integer name="ammunition_price">4</integer>
 

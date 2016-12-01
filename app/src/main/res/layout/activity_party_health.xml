@@ -10,4 +10,108 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.wisc.ece.wiscotrail.PartyHealth">
 
+    <TextView
+        android:text="Party Health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:id="@+id/textView13"
+        android:textSize="28sp" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/partyLeaderName"
+        android:layout_alignRight="@+id/textView13"
+        android:layout_alignEnd="@+id/textView13"
+        android:id="@+id/partyLeaderHealth" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/partyLeaderName"
+        android:layout_alignStart="@+id/partyLeaderName"
+        android:id="@+id/partyMember1Name" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/partyMember1Name"
+        android:layout_alignLeft="@+id/partyLeaderHealth"
+        android:layout_alignStart="@+id/partyLeaderHealth"
+        android:id="@+id/partyMember1Health" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/partyMember1Name"
+        android:layout_alignLeft="@+id/partyMember1Name"
+        android:layout_alignStart="@+id/partyMember1Name"
+        android:layout_marginTop="17dp"
+        android:id="@+id/partyMember2Name" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/partyMember2Name"
+        android:layout_alignRight="@+id/partyMember1Health"
+        android:layout_alignEnd="@+id/partyMember1Health"
+        android:id="@+id/partyMember2Health" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/partyMember2Name"
+        android:layout_alignLeft="@+id/partyMember2Name"
+        android:layout_alignStart="@+id/partyMember2Name"
+        android:layout_marginTop="21dp"
+        android:id="@+id/partyMember3Name" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/partyMember3Name"
+        android:layout_alignLeft="@+id/partyMember2Health"
+        android:layout_alignStart="@+id/partyMember2Health"
+        android:id="@+id/partyMember3Health" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/partyMember3Name"
+        android:layout_alignLeft="@+id/partyMember3Name"
+        android:layout_alignStart="@+id/partyMember3Name"
+        android:layout_marginTop="15dp"
+        android:id="@+id/partyMember4Name" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/partyMember4Name"
+        android:layout_alignLeft="@+id/partyMember3Health"
+        android:layout_alignStart="@+id/partyMember3Health"
+        android:id="@+id/partyMember4Health" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/partyLeaderName"
+        android:textSize="14sp"
+        android:layout_above="@+id/partyMember1Name"
+        android:layout_alignLeft="@+id/textView13"
+        android:layout_alignStart="@+id/textView13"
+        android:layout_marginBottom="34dp" />
 </RelativeLayout>

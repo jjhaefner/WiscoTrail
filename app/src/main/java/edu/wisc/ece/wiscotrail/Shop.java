@@ -51,7 +51,7 @@ public class Shop extends AppCompatActivity {
 
         numOxen.setText(Integer.toString(UserVars.num_oxen));
         numFood.setText(Integer.toString(UserVars.food_lbs));
-        numAlcohol.setText(Integer.toString(UserVars.alcohol_gallons));
+        numAlcohol.setText(Double.toString(UserVars.alcohol_gallons));
         numClothing.setText(Integer.toString(UserVars.num_clothes));
         numAmmunition.setText(Integer.toString(UserVars.ammunition));
         numMoney.setText("$" + Integer.toString(UserVars.money));
@@ -214,7 +214,7 @@ public class Shop extends AppCompatActivity {
     }
     public void addFood(View view){
         if(UserVars.money - foodPrice >=0) {
-            UserVars.food_lbs++;
+            UserVars.food_lbs+= 10;
             UserVars.money = UserVars.money - foodPrice;
             TextView numFood = (TextView)findViewById(R.id.foodCount);
             numFood.setText(Integer.toString(UserVars.food_lbs));
@@ -231,7 +231,7 @@ public class Shop extends AppCompatActivity {
             UserVars.alcohol_gallons++;
             UserVars.money = UserVars.money - alcoholPrice;
             TextView numAlcohol = (TextView)findViewById(R.id.alcoholCount);
-            numAlcohol.setText(Integer.toString(UserVars.alcohol_gallons));
+            numAlcohol.setText(Double.toString(UserVars.alcohol_gallons));
             TextView numMoney = (TextView)findViewById(R.id.cashCount);
             numMoney.setText("$" + Integer.toString(UserVars.money));
         }
