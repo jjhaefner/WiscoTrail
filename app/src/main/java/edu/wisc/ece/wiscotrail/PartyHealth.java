@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 public class PartyHealth extends AppCompatActivity {
@@ -42,5 +43,9 @@ public class PartyHealth extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         finish();
         return true;
+    }
+
+    public void backToDash(View view){
+        finish();
     }
 }
