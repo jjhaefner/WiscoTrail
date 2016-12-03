@@ -2,6 +2,7 @@ package edu.wisc.ece.wiscotrail;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Handler;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.Random;
 public class Health {
 
     private static Handler mHandler = new Handler();
+    private static Runnable mRunnable;
 
     public static void determineHealth(Random rand, Activity act){
         int[] randNums = new int[5];
@@ -74,12 +76,20 @@ public class Health {
                     }
                     else if(currRand < 98){
                         currHealths.set(i, "broken arm");
-                        //TODO: pop-up saying YOU HAVE BROKEN AN ARM
+                        if(i == 0)
+                            alertMessage = "You have broken an arm";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken an arm";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "broken leg");
-                        //TODO: pop-up saying YOU HAVE BROKEN A LEG
+                        if(i == 0)
+                            alertMessage = "You have broken a leg";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken a leg";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF OUT OF FOOD stmt
@@ -110,12 +120,20 @@ public class Health {
                     }
                     else if(currRand < 98){
                         currHealths.set(i, "broken arm");
-                        //TODO: pop-up saying YOU HAVE BROKEN AN ARM
+                        if(i == 0)
+                            alertMessage = "You have broken an arm";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken an arm";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "broken leg");
-                        //TODO: pop-up saying YOU HAVE BROKEN A LEG
+                        if(i == 0)
+                            alertMessage = "You have broken a leg";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken a leg";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF BAREBONES RATIONS stmt
@@ -133,12 +151,20 @@ public class Health {
                     }
                     else if(currRand < 99){
                         currHealths.set(i, "broken arm");
-                        //TODO: pop-up saying YOU HAVE BROKEN AN ARM
+                        if(i == 0)
+                            alertMessage = "You have broken an arm";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken an arm";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "broken leg");
-                        //TODO: pop-up saying YOU HAVE BROKEN A LEG
+                        if(i == 0)
+                            alertMessage = "You have broken a leg";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken a leg";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
 
@@ -155,7 +181,11 @@ public class Health {
                     if(UserVars.alcohol_gallons > 2){
                         if(currRand < 12){
                             currHealths.set(i, "alcohol poisoning");
-                            //TODO: pop-up saying YOU HAVE ALCOHOL POISONING
+                            if(i == 0)
+                                alertMessage = "You have alcohol poisoning";
+                            else
+                                alertMessage = partyNames.get(i) + " has alcohol poisoning";
+                            displayHealthAlert(alertMessage, act);
                             continue;
                         }
                     } //end IF HAS ALCOHOL STMT
@@ -169,32 +199,56 @@ public class Health {
                     }
                     else if(currRand < 87){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 90){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 93){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 96){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 98){
                         currHealths.set(i, "broken arm");
-                        //TODO: pop-up saying YOU HAVE BROKEN AN ARM
+                        if(i == 0)
+                            alertMessage = "You have broken an arm";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken an arm";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "broken leg");
-                        //TODO: pop-up saying YOU HAVE BROKEN A LEG
+                        if(i == 0)
+                            alertMessage = "You have broken a leg";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken a leg";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF OUT OF FOOD STMT
@@ -203,7 +257,11 @@ public class Health {
                     if(UserVars.alcohol_gallons > 2){
                         if(currRand < 8){
                             currHealths.set(i, "alcohol poisoning");
-                            //TODO: pop-up saying YOU HAVE ALCOHOL POISONING
+                            if(i == 0)
+                                alertMessage = "You have alcohol poisoning";
+                            else
+                                alertMessage = partyNames.get(i) + " has alcohol poisoning";
+                            displayHealthAlert(alertMessage, act);
                             continue;
                         }
                     } //end IF HAS ALCOHOL STMT
@@ -217,32 +275,56 @@ public class Health {
                     }
                     else if(currRand < 90){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 92){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 94){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 96){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 98){
                         currHealths.set(i, "broken arm");
-                        //TODO: pop-up saying YOU HAVE BROKEN AN ARM
+                        if(i == 0)
+                            alertMessage = "You have broken an arm";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken an arm";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "broken leg");
-                        //TODO: pop-up saying YOU HAVE BROKEN A LEG
+                        if(i == 0)
+                            alertMessage = "You have broken a leg";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken a leg";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF BAREBONES RATIONS STMT
@@ -258,32 +340,56 @@ public class Health {
                     }
                     else if(currRand < 92){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 94){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 95){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 96){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 98){
                         currHealths.set(i, "broken arm");
-                        //TODO: pop-up saying YOU HAVE BROKEN AN ARM
+                        if(i == 0)
+                            alertMessage = "You have broken an arm";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken an arm";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "broken leg");
-                        //TODO: pop-up saying YOU HAVE BROKEN A LEG
+                        if(i == 0)
+                            alertMessage = "You have broken a leg";
+                        else
+                            alertMessage = partyNames.get(i) + " has broken a leg";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 }//end IF GOOD RATIONS STMT
@@ -295,12 +401,20 @@ public class Health {
             else if(currHealth.equals("alcohol poisoning")){
                 if(currRand < 2){
                     currHealths.set(i, "dead");
-                    //TODO: pop-up saying YOU HAVE DIED OF ALCOHOL POISONING
+                    if(i == 0)
+                        alertMessage = "You have died from alcohol poisoning";
+                    else
+                        alertMessage = partyNames.get(i) + " has died from alcohol poisoning";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else if(currRand < 65){
                     currHealths.set(i, "tired");
-                    //TODO: pop-up saying YOU NO LONGER HAVE ALCOHOL POISONING
+                    if(i == 0)
+                        alertMessage = "You no longer have alcohol poisoning";
+                    else
+                        alertMessage = partyNames.get(i) + " no longer has alcohol poisoning";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else{
@@ -316,12 +430,20 @@ public class Health {
             else if(currHealth.equals("cholera")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    //TODO: pop-up saying YOU HAVE DIED OF CHOLERA
+                    if(i == 0)
+                        alertMessage = "You have died of cholera";
+                    else
+                        alertMessage = partyNames.get(i) + " has died of cholera";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else if(currRand < 45){
                     currHealths.set(i, "tired");
-                    //TODO: pop-up saying YOU NO LONGER HAVE CHOLERA
+                    if(i == 0)
+                        alertMessage = "You no longer have cholera";
+                    else
+                        alertMessage = partyNames.get(i) + " no longer has cholera";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else{
@@ -336,17 +458,25 @@ public class Health {
             else if(currHealth.equals("dysentery")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    //TODO: pop-up saying YOU HAVE DIED OF DYSTENERY
+                    if(i == 0)
+                        alertMessage = "You have died of dysentery";
+                    else
+                        alertMessage = partyNames.get(i) + " has died of dysentery";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else if(currRand < 45){
                     currHealths.set(i, "tired");
-                    //TODO: pop-up saying YOU NO LONGER HAVE DYSENTERY
+                    if(i == 0)
+                        alertMessage = "You no longer have dysentery";
+                    else
+                        alertMessage = partyNames.get(i) + " no longer has dysentery";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else{
                     //remain sick with dysentery
-                    currHealths.set(i, "dystentery");
+                    currHealths.set(i, "dysentery");
                     continue;
                 }
 
@@ -356,12 +486,20 @@ public class Health {
             else if(currHealth.equals("measles")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    //TODO: pop-up saying YOU HAVE DIED OF MEASLES
+                    if(i == 0)
+                        alertMessage = "You have died of measles";
+                    else
+                        alertMessage = partyNames.get(i) + " has died of measles";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else if(currRand < 45){
                     currHealths.set(i, "tired");
-                    //TODO: pop-up saying YOU NO LONGER HAVE THE MEASLES
+                    if(i == 0)
+                        alertMessage = "You no longer have measles";
+                    else
+                        alertMessage = partyNames.get(i) + " no longer has measles";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else{
@@ -375,12 +513,20 @@ public class Health {
             else if(currHealth.equals("typhoid")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    //TODO: pop-up saying YOU HAVE DIED OF TYPHOID
+                    if(i == 0)
+                        alertMessage = "You have died of typhoid";
+                    else
+                        alertMessage = partyNames.get(i) + " has died of typhoid";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else if(currRand < 45){
                     currHealths.set(i, "tired");
-                    //TODO: pop-up saying YOU NO LONGER HAVE TYPHOID
+                    if(i == 0)
+                        alertMessage = "You no longer have typhoid";
+                    else
+                        alertMessage = partyNames.get(i) + " no longer has typhoid";
+                    displayHealthAlert(alertMessage, act);
                     continue;
                 }
                 else{
@@ -399,7 +545,11 @@ public class Health {
                     //most likely to have bad things happen
                     if(currRand < 20){
                         currHealths.set(i, "tired");
-                        //TODO: pop-up message saying YOUR BROKEN ARM HAS HEALED
+                        if(i == 0)
+                            alertMessage = "Your broken arm has healed";
+                        else
+                            alertMessage = partyNames.get(i) + "'s broken arm has healed";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 88){
@@ -408,27 +558,47 @@ public class Health {
                     }
                     else if(currRand < 92){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 94){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 96){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 98){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "dead");
-                        //TODO: pop-up saying YOU HAVE DIED OF INFECTION
+                        if(i == 0)
+                            alertMessage = "You have died of infection";
+                        else
+                            alertMessage = partyNames.get(i) + " has died of infection";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF OUT OF FOOD STMT
@@ -436,7 +606,11 @@ public class Health {
                     //more likely to have bad things happen
                     if(currRand < 30){
                         currHealths.set(i, "tired");
-                        //TODO: pop-up message saying YOUR BROKEN ARM HAS HEALED
+                        if(i == 0)
+                            alertMessage = "Your broken arm has healed";
+                        else
+                            alertMessage = partyNames.get(i) + "'s broken arm has healed";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 88){
@@ -445,27 +619,47 @@ public class Health {
                     }
                     else if(currRand < 92){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 95){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 97){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 99){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "dead");
-                        //TODO: pop-up saying YOU HAVE DIED OF INFECTION
+                        if(i == 0)
+                            alertMessage = "You have died of infection";
+                        else
+                            alertMessage = partyNames.get(i) + " has died of infection";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF BAREBONES RATIONS STMT
@@ -473,7 +667,11 @@ public class Health {
                     //if rations are good, you're still sort of fucked
                     if(currRand < 35){
                         currHealths.set(i, "tired");
-                        //TODO: pop-up message saying YOUR BROKEN ARM HAS HEALED
+                        if(i == 0)
+                            alertMessage = "Your broken arm has healed";
+                        else
+                            alertMessage = partyNames.get(i) + "'s broken arm has healed";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 90){
@@ -482,27 +680,47 @@ public class Health {
                     }
                     else if(currRand < 93){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 95){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 97){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 99){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "dead");
-                        //TODO: pop-up saying YOU HAVE DIED OF INFECTION
+                        if(i == 0)
+                            alertMessage = "You have died of infection";
+                        else
+                            alertMessage = partyNames.get(i) + " has died of infection";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 }//end IF GOOD RATIONS STMT
@@ -518,7 +736,11 @@ public class Health {
                     //most likely to have bad things happen
                     if(currRand < 20){
                         currHealths.set(i, "tired");
-                        //TODO: pop-up message saying YOUR BROKEN LEG HAS HEALED
+                        if(i == 0)
+                            alertMessage = "Your broken leg has healed";
+                        else
+                            alertMessage = partyNames.get(i) + "'s broken leg has healed";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 82){
@@ -527,27 +749,47 @@ public class Health {
                     }
                     else if(currRand < 90){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 93){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 95){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 97){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "dead");
-                        //TODO: pop-up saying YOU HAVE DIED OF INFECTION
+                        if(i == 0)
+                            alertMessage = "You have died of infection";
+                        else
+                            alertMessage = partyNames.get(i) + " has died of infection";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF OUT OF FOOD STMT
@@ -555,7 +797,11 @@ public class Health {
                     //more likely to have bad things happen
                     if(currRand < 25){
                         currHealths.set(i, "tired");
-                        //TODO: pop-up message saying YOUR BROKEN LEG HAS HEALED
+                        if(i == 0)
+                            alertMessage = "Your broken leg has healed";
+                        else
+                            alertMessage = partyNames.get(i) + "'s broken leg has healed";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 87){
@@ -564,27 +810,47 @@ public class Health {
                     }
                     else if(currRand < 91){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 93){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 95){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 97){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "dead");
-                        //TODO: pop-up saying YOU HAVE DIED OF INFECTION
+                        if(i == 0)
+                            alertMessage = "You have died of infection";
+                        else
+                            alertMessage = partyNames.get(i) + " has died of infection";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 } //end IF BAREBONES RATIONS STMT
@@ -592,7 +858,11 @@ public class Health {
                     //if rations are good, you're still sort of fucked
                     if(currRand < 30){
                         currHealths.set(i, "tired");
-                        //TODO: pop-up message saying YOUR BROKEN LEG HAS HEALED
+                        if(i == 0)
+                            alertMessage = "Your broken leg has healed";
+                        else
+                            alertMessage = partyNames.get(i) + "'s broken leg has healed";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 88){
@@ -601,27 +871,47 @@ public class Health {
                     }
                     else if(currRand < 91){
                         currHealths.set(i, "dysentery");
-                        //TODO: pop-up saying YOU HAVE DYSENTARY
+                        if(i == 0)
+                            alertMessage = "You have dysentery";
+                        else
+                            alertMessage = partyNames.get(i) + " has dysentery";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 94){
                         currHealths.set(i, "cholera");
-                        //TODO: pop-up saying YOU HAVE CHOLERA
+                        if(i == 0)
+                            alertMessage = "You have cholera";
+                        else
+                            alertMessage = partyNames.get(i) + " has cholera";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 96){
                         currHealths.set(i, "measles");
-                        //TODO: pop-up saying YOU HAVE MEASLES
+                        if(i == 0)
+                            alertMessage = "You have measles";
+                        else
+                            alertMessage = partyNames.get(i) + " has measles";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else if(currRand < 98){
                         currHealths.set(i, "typhoid");
-                        //TODO: pop-up saying YOU HAVE TYPHOID
+                        if(i == 0)
+                            alertMessage = "You have typhoid";
+                        else
+                            alertMessage = partyNames.get(i) + " has typhoid";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                     else{
                         currHealths.set(i, "dead");
-                        //TODO: pop-up saying YOU HAVE DIED OF INFECTION
+                        if(i == 0)
+                            alertMessage = "You have died of infection";
+                        else
+                            alertMessage = partyNames.get(i) + " has died of infection";
+                        displayHealthAlert(alertMessage, act);
                         continue;
                     }
                 }//end IF GOOD RATIONS STMT
@@ -648,8 +938,30 @@ public class Health {
 
     public static void displayHealthAlert(String message, Activity activity){
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setMessage(message);
-        AlertDialog dialog = builder.create();
+        builder.setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        final AlertDialog dialog = builder.create();
         dialog.show();
+
+        /*mRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if(dialog.isShowing())
+                    dialog.dismiss();
+            }
+        };
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                mHandler.removeCallbacks(mRunnable);
+            }
+        });
+
+        mHandler.postDelayed(mRunnable, 5000);
+        */
     }
 }

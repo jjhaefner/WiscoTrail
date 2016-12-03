@@ -10,74 +10,104 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".StartTrail"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".TrailInfo"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ToggleSound"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ManagementOptions"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PickLeader"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainScreen"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PickParty"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".FarmNFleet"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".DepartureMonth"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Shop"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Minneapolis"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MississippiRiver"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EauClaire"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".DevilsLake"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Madison"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".WisconsinRiver"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".NewGlarus"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RockRiver"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Milwaukee"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Sheboygan"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".GreenBay"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".TravelAnimation"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Hunt"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".TravelSettings"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Trade"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".EndGame"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ViewSupplies"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".PartyHealth"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StartTrail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TrailInfo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ToggleSound"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ManagementOptions"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PickLeader"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".MainScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PickParty"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".FarmNFleet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DepartureMonth"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Shop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Minneapolis"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MississippiRiver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EauClaire"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DevilsLake"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Madison"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WisconsinRiver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewGlarus"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RockRiver"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Milwaukee"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Sheboygan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GreenBay"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TravelAnimation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Hunt"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TravelSettings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Trade"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EndGame"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewSupplies"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PartyHealth"
+            android:screenOrientation="portrait" />
+        <activity android:name=".RiverCrossing"></activity>
     </application>
 
 </manifest>

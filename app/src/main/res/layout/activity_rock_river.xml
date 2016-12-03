@@ -11,12 +11,32 @@
     tools:context="edu.wisc.ece.wiscotrail.RockRiver">
 
     <TextView
-        android:text="Rock River Crossing"
+        android:text="You have reached the Rock River!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView14"
         android:textSize="28sp"
         android:textAlignment="center"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Pay $200 to take the ferry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView14"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="96dp"
+        android:id="@+id/payToCrossBtn3"
+        android:onClick="payAndTakeFerry"/>
+
+    <Button
+        android:text="Attempt to  ford the river on your own"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payToCrossBtn3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
+        android:id="@+id/goToRiverCrossingBtn3"
+        android:onClick="goToRiverCrossing"/>
 </RelativeLayout>
