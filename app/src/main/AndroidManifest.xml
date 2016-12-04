@@ -107,7 +107,9 @@
         <activity
             android:name=".PartyHealth"
             android:screenOrientation="portrait" />
-        <activity android:name=".RiverCrossing"></activity>
+        <activity android:name=".RiverCrossing"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

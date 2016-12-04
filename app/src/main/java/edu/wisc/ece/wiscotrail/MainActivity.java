@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startTrail(View view){
-        Intent intent = new Intent(this, StartTrail.class);
+        //Intent intent = new Intent(this, StartTrail.class);
+        Intent intent = new Intent(this, RiverCrossing.class);
         startActivity(intent);
     }
 
