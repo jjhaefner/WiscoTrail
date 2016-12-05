@@ -39,11 +39,6 @@ public class PartyHealth extends AppCompatActivity {
         partyMember4Health.setText(UserVars.partyMember4_health);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        finish();
-        return true;
-    }
 
     public void backToDash(View view){
         finish();
