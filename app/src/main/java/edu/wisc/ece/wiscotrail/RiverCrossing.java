@@ -3,6 +3,9 @@ package edu.wisc.ece.wiscotrail;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
@@ -11,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.lang.Math;
@@ -29,6 +33,8 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
     private static final double EPSILON = 0.05;
     private float[] currentRotationMatrix = new float[9];
     private float[] gyroscopeOrientation = new float[3];
+    TextView test1;
+    TextView test2;
     TextView oriView1;
     Random rand;
     ImageView wagon_img;
@@ -38,7 +44,18 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_river_crossing);
         wagon_img = (ImageView)findViewById(R.id.wagon_img);
+        test1 = (TextView)findViewById(R.id.testView1);
+        test2 = (TextView)findViewById(R.id.testView2);
+
         wagon_img.setScaleType(ImageView.ScaleType.MATRIX);
+        scaleImage(wagon_img, 150);
+        /*matrix = wagon_img.getImageMatrix();
+        float[] vals = new float[9];
+        matrix.getValues(vals);
+        float scaleX = 1 / vals[Matrix.MTRANS_X];
+        float scaleY = 1 / vals[Matrix.MTRANS_Y];
+        matrix.postScale(scaleX, scaleY);
+        wagon_img.setImageMatrix(matrix);*/
 
         oriView1 = (TextView)findViewById(R.id.orientationVal1);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -63,18 +80,70 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 
     }
 
+    /*
+    function taken from argillander.wordpress.com
+    */
+    public void scaleImage(ImageView iv, int boundsDP){
+
+        // Get the ImageView and its bitmap
+        Drawable drawing = iv.getDrawable();
+        Bitmap bitmap = ((BitmapDrawable)drawing).getBitmap();
+
+        // Get current dimensions
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        // Determine how much to scale: the dimension requiring less scaling is
+        // closer to the its side. This way the image always stays inside your
+        // bounding box AND either x/y axis touches it.
+        float xScale = ((float) boundsDP) / width;
+        float yScale = ((float) boundsDP) / height;
+        float scale = (xScale <= yScale) ? xScale : yScale;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        // Create a new bitmap and convert it to a format understood by the ImageView
+        Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+        BitmapDrawable result = new BitmapDrawable(scaledBitmap);
+        width = scaledBitmap.getWidth();
+        height = scaledBitmap.getHeight();
+
+        // Apply the scaled bitmap
+        iv.setImageBitmap(scaledBitmap);
+
+        // Now change ImageView's dimensions to match the scaled image
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) iv.getLayoutParams();
+        params.width = width;
+        params.height = height;
+        iv.setLayoutParams(params);
+
+    }
+
     public void onAccuracyChanged(Sensor sensor, int i){
 
     }
 
     public void doOrientationThings(SensorEvent event){
 
+        /*angle = 360 - angle;
+        Matrix matrix=new Matrix();
+        rose.setScaleType(ScaleType.MATRIX);
+        pivX = rose.getDrawable().getBounds().width()/2;
+        pivY = rose.getDrawable().getBounds().height()/2;
+        matrix.preRotate((float) angle, pivX, pivY);
+        rose.setImageMatrix(matrix);*/
+        scaleImage(wagon_img, 150);
+
         float x_rot = event.values[2];
         oriView1.setText(Float.toString(x_rot));
         float pivotX = wagon_img.getX() + (wagon_img.getWidth()  / 2);
         float pivotY = wagon_img.getY() + (wagon_img.getHeight() / 2);
-
-        matrix.postRotate((float) (x_rot/2), pivotX, pivotY);
+        //matrix = wagon_img.getImageMatrix();
+        matrix.preRotate((float) (x_rot/2), pivotX, pivotY);
+        test1.setText(Integer.toString(wagon_img.getWidth()));
+        test2.setText(Integer.toString(wagon_img.getHeight()));
+        //2wagon_img.set
         wagon_img.setImageMatrix(matrix);
     }
 

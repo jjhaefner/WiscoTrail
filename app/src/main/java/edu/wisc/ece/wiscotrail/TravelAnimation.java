@@ -236,6 +236,55 @@ public class TravelAnimation extends AppCompatActivity {
         //if health is pretty bad, -= 4 per person
         //if health is pretty bad, -= 8 per person
         //if people are dead, -= 15 per person
+        ArrayList<String> currHealths = new ArrayList<String>();
+        currHealths.add(0, UserVars.partyLeader_health);
+        currHealths.add(1, UserVars.partyMember1_health);
+        currHealths.add(2, UserVars.partyMember2_health);
+        currHealths.add(3, UserVars.partyMember3_health);
+        currHealths.add(4, UserVars.partyMember4_health);
+        String currHealth;
+        // health options: healthy, broken arm, broken leg,
+        // alcohol poisoning, cholera, dysentery, measles
+        // typhoid, tired, dead
+        for(int i = 0; i < 5; i++){
+            currHealth = currHealths.get(i);
+            if(currHealth.equals("broken arm")) {
+                morale_score -= 4;
+                continue;
+            }
+            if(currHealth.equals("broken leg")) {
+                morale_score -= 5;
+                continue;
+            }
+            if(currHealth.equals("alcohol poisoning")) {
+                morale_score -= 4;
+                continue;
+            }
+            if(currHealth.equals("cholera")) {
+                morale_score -= 8;
+                continue;
+            }
+            if(currHealth.equals("dysentery")) {
+                morale_score -= 8;
+                continue;
+            }
+            if(currHealth.equals("measles")) {
+                morale_score -= 8;
+                continue;
+            }
+            if(currHealth.equals("typhoid")) {
+                morale_score -= 8;
+                continue;
+            }
+            if(currHealth.equals("tired")) {
+                morale_score -= 3;
+                continue;
+            }
+            if(currHealth.equals("dead")) {
+                morale_score -= 15;
+                continue;
+            }
+        }
 
         if(morale_score < 20){
             UserVars.morale = "couldn't be worse";
