@@ -6,6 +6,7 @@ package edu.wisc.ece.wiscotrail;
 
 public class UserVars {
 
+    //redundant comment
     public static String partyLeader = "Bucky";
     public static String partyMember1 = "Becky";
     public static String partyMember2 = "Lori";
