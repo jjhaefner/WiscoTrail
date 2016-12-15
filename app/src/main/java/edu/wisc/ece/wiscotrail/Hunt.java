@@ -14,6 +14,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -78,29 +79,25 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
         //set "cow" randomly section
         final ImageView cow = (ImageView) findViewById(R.id.cow);
-//////////////////////////////////////////////////////////////////////////////////////////////////
-//       cow.setImageResource(R.drawable.deer);
-//       cow.getLayoutParams().width = 200;
-//////////////////////////////////////////////////////////////////////////////////////////////////
 //        cow.setX(xRand);
 //        cow.setY(yRand);
 
         //if the cow is touched add a bullet hole at the touch location
         bulletHoles = new ImageView[numBullets];
-        final Bitmap bitmap = ((BitmapDrawable)cow.getBackground()).getBitmap();
+        final Bitmap bitmap = ((BitmapDrawable) cow.getBackground()).getBitmap();
         cow.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View view, MotionEvent event) {
 
                 int pixel = 0;
-                int pixX = (int)event.getX();
-                int pixY = (int)event.getY();
+                int pixX = (int) event.getX();
+                int pixY = (int) event.getY();
                 //this part is sort of a stretch...try to find pixel on bitmap translated from real image
                 //update: it works
-                if(bitmap != null|| pixX <0 || pixY<0 || pixX > cow.getWidth() || pixY > cow.getHeight()) {
-                    int projectedX = (int)((double)pixX * ((double)bitmap.getWidth()/(double)cow.getWidth()));
-                    int projectedY = (int)((double)pixY * ((double)bitmap.getHeight()/(double)cow.getHeight()));
+                if (bitmap != null || pixX < 0 || pixY < 0 || pixX > cow.getWidth() || pixY > cow.getHeight()) {
+                    int projectedX = (int) ((double) pixX * ((double) bitmap.getWidth() / (double) cow.getWidth()));
+                    int projectedY = (int) ((double) pixY * ((double) bitmap.getHeight() / (double) cow.getHeight()));
                     //crashes without checks for bounds
-                    if(projectedX < bitmap.getWidth() && projectedY < bitmap.getHeight() && projectedX > 0 && projectedY > 0) {
+                    if (projectedX < bitmap.getWidth() && projectedY < bitmap.getHeight() && projectedX > 0 && projectedY > 0) {
                         pixel = bitmap.getPixel(projectedX, projectedY);
                     }
                 }
@@ -157,8 +154,18 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
             layout.addView(bullet);
             //space the bullets apart
             bullet.setX(bullet.getX() + i * 65);
-            bullet.setY(bullet.getY()+18);
+            bullet.setY(bullet.getY() + 18);
         }
+
+        //exit button
+        Button exitButton = (Button) findViewById(R.id.exitButton);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                finish();
+            }
+
+        });
+
     }
 
     @SuppressWarnings("ResourceType") //annoying error that doesn't affect anything
@@ -179,7 +186,7 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
 //TODO make work for every phone dimensions
                     float deltaX = (float) ((x * dT * 40) / hAngle) * width;
-                    float deltaY = (float) ((y * dT * 40) / vAngle) * height;
+                    float deltaY = (float) ((y * dT * 20) / vAngle) * height;
 
                     ImageView cow = (ImageView) findViewById(R.id.cow);
                     if (cow.getX() < -3056) cow.setX(1069);
