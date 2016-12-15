@@ -19,4 +19,6 @@ public class Hunt extends AppCompatActivity {
         startActivity(intent);
         return super.onTouchEvent(event);
     }
+
+    //Jacob's Activity
 }
