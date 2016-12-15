@@ -37,9 +37,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadGame(View view){
-        Intent intent = new Intent(this, RiverCrossing.class);
+        if(UserVars.loadData(this)){
+            Intent intent = new Intent(this, MainScreen.class);
+            startActivity(intent);
+        }
 
-        startActivity(intent);
     }
 
     public void learnAboutTrail(View view){

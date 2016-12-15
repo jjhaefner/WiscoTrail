@@ -256,7 +256,7 @@ public class Shop extends AppCompatActivity {
     }
     public void addAmmunition(View view){
         if(UserVars.money - ammunitionPrice >=0) {
-            UserVars.ammunition++;
+            UserVars.ammunition+= 20;
             UserVars.money = UserVars.money - ammunitionPrice;
             TextView numAmmunition = (TextView)findViewById(R.id.ammunitionCount);
             numAmmunition.setText(Integer.toString(UserVars.ammunition));
