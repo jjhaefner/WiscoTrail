@@ -23,6 +23,7 @@ public class MississippiRiver extends AppCompatActivity {
             UserVars.money -= 200;
             //TODO: make a little animation for crossing the river
             Intent intent = new Intent(this, MainScreen.class);
+            finish();
             startActivity(intent);
         }
         else{
@@ -33,6 +34,7 @@ public class MississippiRiver extends AppCompatActivity {
 
     public void goToRiverCrossing(View view){
         Intent intent = new Intent(this, RiverCrossing.class);
+        finish();
         startActivity(intent);
     }
 }

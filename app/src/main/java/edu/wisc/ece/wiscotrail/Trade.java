@@ -368,11 +368,4 @@ public class Trade extends AppCompatActivity {
         finish();
     }
 
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Intent intent = new Intent(this, MainScreen.class);
-        startActivity(intent);
-        return super.onTouchEvent(event);
-    }
 }

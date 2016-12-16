@@ -18,6 +18,7 @@ public class Madison extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Intent intent = new Intent(this, MainScreen.class);
+        finish();
         startActivity(intent);
         return super.onTouchEvent(event);
     }
