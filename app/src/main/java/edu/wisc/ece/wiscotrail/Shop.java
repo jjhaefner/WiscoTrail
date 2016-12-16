@@ -278,6 +278,7 @@ public class Shop extends AppCompatActivity {
             UserVars.money -= shoppingTotal;
 
             Intent intent = new Intent(this, FarmNFleet.class);
+            finish();
             startActivity(intent);
         }
         else{

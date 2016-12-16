@@ -16,6 +16,7 @@ public class ManagementOptions extends AppCompatActivity {
 
     public void turnSoundOff(View view){
         Intent intent = new Intent(this, ToggleSound.class);
+        finish();
         startActivity(intent);
     }
 }

@@ -16,12 +16,14 @@ public class StartTrail extends AppCompatActivity {
     public void beABanker(View view){
         UserVars.money = 2000;
         Intent intent = new Intent(this, PickLeader.class);
+        finish();
         startActivity(intent);
     }
 
     public void beATunnelOperator(View view){
         UserVars.money = 600;
         Intent intent = new Intent(this, PickLeader.class);
+        finish();
         startActivity(intent);
     }
 
@@ -30,12 +32,14 @@ public class StartTrail extends AppCompatActivity {
         UserVars.num_oxen = 2;
         UserVars.money = 700;
         Intent intent = new Intent(this, PickLeader.class);
+        finish();
         startActivity(intent);
     }
     public void beABartender(View view){
         UserVars.alcohol_gallons = 10;
         UserVars.money = 1200;
         Intent intent = new Intent(this, PickLeader.class);
+        finish();
         startActivity(intent);
     }
 }

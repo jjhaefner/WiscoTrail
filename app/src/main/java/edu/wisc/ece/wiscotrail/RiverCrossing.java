@@ -230,7 +230,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 */
     }
 
-    private float[] matrixMultiplication(float[] a, float[] b)
+    /*private float[] matrixMultiplication(float[] a, float[] b)
     {
         float[] result = new float[9];
 
@@ -247,7 +247,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         result[8] = a[6] * b[2] + a[7] * b[5] + a[8] * b[8];
 
         return result;
-    }
+    }*/
 
     public void endCrossingAlert(String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

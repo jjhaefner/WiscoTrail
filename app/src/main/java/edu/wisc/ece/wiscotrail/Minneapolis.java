@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 public class Minneapolis extends AppCompatActivity {
 
@@ -14,10 +15,14 @@ public class Minneapolis extends AppCompatActivity {
         MainScreen.milestoneSet = true;
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Intent intent = new Intent(this, MainScreen.class);
-        startActivity(intent);
-        return super.onTouchEvent(event);
+    public void backToDash(View view){
+        finish();
     }
+
+    public void goFarmNFleet(View view){
+        Intent intent = new Intent(this, FarmNFleet.class);
+        finish();
+        startActivity(intent);
+    }
+
 }

@@ -25,6 +25,7 @@ public class PickLeader extends AppCompatActivity {
         if(nameField.getText().toString().trim().length() > 0) {
             UserVars.partyLeader = nameField.getText().toString().trim();
             Intent intent = new Intent(this, PickParty.class);
+            finish();
             startActivity(intent);
         }
         else{
