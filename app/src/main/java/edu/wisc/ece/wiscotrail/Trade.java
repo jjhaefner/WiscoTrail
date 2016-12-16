@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,7 +15,7 @@ import java.util.Random;
 public class Trade extends AppCompatActivity {
 
     TextView tradeSitch;
-    Button tradeBtn;
+    Button tradeBtn, declineBtn;
     Random myRandom;
     String tradeCode, whatToTrade;
     int numUpForTrade, numTrading;
@@ -25,6 +26,7 @@ public class Trade extends AppCompatActivity {
 
         tradeSitch = (TextView)findViewById(R.id.tradeSituation);
         tradeBtn = (Button)findViewById(R.id.tradeNowBtn);
+        declineBtn = (Button)findViewById(R.id.dontTradeBtn);
         myRandom = new Random();
         tradeCode = "no";
         whatToTrade = "no";
@@ -33,7 +35,14 @@ public class Trade extends AppCompatActivity {
 
         randomTradeGenerator();
         setTheText();
-
+        String btnText = "give " + numTrading + " " + whatToTrade + ".";
+        if(tradeCode.equals("no")){
+            tradeBtn.setVisibility(View.INVISIBLE);
+            declineBtn.setText("Deal with it.");
+        }
+        else {
+            tradeBtn.setText(btnText);
+        }
     }
 
     /* SUPPLIES UP FOR TRADING:
@@ -229,7 +238,7 @@ public class Trade extends AppCompatActivity {
         }
     }
 
-    public void completeTrade(){
+    public void completeTrade(View view){
         if (!tradeCode.equalsIgnoreCase("no")) {
             //First determine if you have enough of whatever it is you're paying with
             //if not, show a toast and finish the activity.
@@ -353,6 +362,10 @@ public class Trade extends AppCompatActivity {
         final AlertDialog dialog = builder.create();
         dialog.show();
 
+    }
+
+    public void backToDash(View view){
+        finish();
     }
 
 

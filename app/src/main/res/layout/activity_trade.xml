@@ -14,7 +14,6 @@
         android:text="Trading."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
         android:id="@+id/tradeSituation"
         android:textSize="28sp"
         android:fontFamily="sans-serif"
@@ -26,16 +25,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tradeNowBtn"
+        android:layout_marginTop="60dp"
+        android:onClick="completeTrade"
         android:layout_below="@+id/tradeSituation"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="122dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:text="Decline to Trade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="22dp"
         android:id="@+id/dontTradeBtn"
+        android:onClick="backToDash"
         android:layout_below="@+id/tradeNowBtn"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

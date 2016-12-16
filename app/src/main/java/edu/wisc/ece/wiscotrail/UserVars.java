@@ -3,8 +3,16 @@ package edu.wisc.ece.wiscotrail;
 /**
  * Created by Lewis on 11/7/2016.
  */
+import android.content.SharedPreferences;
+import android.content.Context;
+import android.widget.Toast;
+
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class UserVars {
+
+    static SharedPreferences dataStore;
 
     //redundant comment
     public static String partyLeader = "Bucky";
@@ -106,5 +114,93 @@ public class UserVars {
         return_date = month + " " + day + ", " + year;
 
         return return_date;
+    }
+
+    public static void saveData(Context context){
+
+
+        String mKey = context.getString(R.string.preference_name);
+        dataStore = context.getSharedPreferences(mKey, MODE_PRIVATE);
+
+
+        SharedPreferences.Editor mEditor = dataStore.edit();
+        mEditor.clear();
+        mEditor.putString("party_leader",partyLeader);
+        mEditor.putString("party_member1",partyMember1);
+        mEditor.putString("party_member2",partyMember2);
+        mEditor.putString("party_member3",partyMember3);
+        mEditor.putString("party_member4",partyMember4);
+
+        mEditor.putString("leader_health", partyLeader_health);
+        mEditor.putString("member1_health", partyMember1_health);
+        mEditor.putString("member2_health", partyMember2_health);
+        mEditor.putString("member3_health", partyMember3_health);
+        mEditor.putString("member4_health", partyMember4_health);
+
+        mEditor.putString("rations", rations);
+        mEditor.putString("morale", morale);
+        mEditor.putString("pace", pace);
+        mEditor.putString("rations", rations);
+        mEditor.putString("weather", weather);
+
+        mEditor.putInt("mileage", mileage);
+        mEditor.putInt("alcohol_gallons", (int)(alcohol_gallons));
+        mEditor.putInt("food_lbs", food_lbs);
+        mEditor.putInt("num_oxen", num_oxen);
+        mEditor.putInt("num_clothes", num_clothes);
+        mEditor.putInt("money", money);
+        mEditor.putInt("date", date);
+        mEditor.putInt("ammunition", ammunition);
+
+        mEditor.commit();
+
+        Toast.makeText(context, "Data Saved!",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    public static Boolean loadData(Context context){
+
+        String mKey = "my_shared_preferences";
+        dataStore = context.getSharedPreferences(mKey, MODE_PRIVATE);
+
+        SharedPreferences.Editor mEditor = dataStore.edit();
+        mEditor.clear();
+        String test_string = dataStore.getString("party_leader", "Error");
+
+        if(test_string.equals("Error")){
+            Toast.makeText(context, "No Saved Data Found",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        partyLeader = dataStore.getString("party_leader", "");
+        partyMember1 = dataStore.getString("party_member1", "");
+        partyMember2 = dataStore.getString("party_member2", "");
+        partyMember3 = dataStore.getString("party_member3", "");
+        partyMember4 = dataStore.getString("party_member4", "");
+
+        partyLeader_health = dataStore.getString("leader_health", "");
+        partyMember1_health = dataStore.getString("member1_health", "");
+        partyMember2_health = dataStore.getString("member2_health", "");
+        partyMember3_health = dataStore.getString("member3_health", "");
+        partyMember4_health = dataStore.getString("member4_health", "");
+
+        rations = dataStore.getString("rations", "");
+        morale = dataStore.getString("morale", "");
+        pace = dataStore.getString("pace", "");
+        rations = dataStore.getString("rations", "");
+        weather = dataStore.getString("weather", "");
+
+        mileage = dataStore.getInt("mileage", -1);
+        alcohol_gallons = dataStore.getInt("alcohol_gallons", -1);
+        food_lbs = dataStore.getInt("food_lbs", -1);
+        num_oxen = dataStore.getInt("num_oxen", -1);
+        num_clothes = dataStore.getInt("num_clothes", -1);
+        money = dataStore.getInt("money", -1);
+        date = dataStore.getInt("date", -1);
+        ammunition = dataStore.getInt("ammunition", -1);
+
+        Toast.makeText(context, "Loaded previous game!",
+                Toast.LENGTH_SHORT).show();
+        return true;
     }
 }

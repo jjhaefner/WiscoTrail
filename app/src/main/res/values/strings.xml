@@ -4,5 +4,36 @@
     <color name="lime">#00FF00</color>
     <color name="almost_white">#eeeeee</color>
 
+    <!-- SharedPreferences -->
+
+    <string name="preference_name">my_shared_preferences</string>
+
+    <string name="preference_key_mileage">mileage</string>
+    <string name="preference_key_rations">rations</string>
+    <string name="preference_key_alcohol_gallons">alcohol_gallons</string>
+    <string name="preference_key_food_lbs">food_lbs</string>
+    <string name="preference_key_num_oxen">num_oxen</string>
+    <string name="preference_key_num_clothes">num_clothes</string>
+    <string name="preference_key_weather">weather</string>
+    <string name="preference_key_morale">morale</string>
+    <string name="preference_key_pace">pace</string>
+    <string name="preference_key_money">money</string>
+    <string name="preference_key_date">date</string>
+    <string name="preference_key_ammunition">ammunition</string>
+
+
+
+    <string name="preference_key_party_leader">party_leader</string>
+    <string name="preference_key_party_member1">party_member1</string>
+    <string name="preference_key_party_member2">party_member2</string>
+    <string name="preference_key_party_member3">party_member3</string>
+    <string name="preference_key_party_member4">party_member4</string>
+
+    <string name="preference_key_leader_health">leader_health</string>
+    <string name="preference_key_member1_health">member1_health</string>
+    <string name="preference_key_member2_health">member2_health</string>
+    <string name="preference_key_member3_health">member3_health</string>
+    <string name="preference_key_member4_health">member4_health</string>
+
 
 </resources>
