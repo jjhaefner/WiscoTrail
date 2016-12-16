@@ -8,6 +8,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -43,6 +44,8 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     private float yRand = 300;
 
     private SensorManager sensorManager; //sensor attempt
+    //gunshot sound effect
+    MediaPlayer mp;
 
     RelativeLayout layout;
     ImageView bulletHole;  //used to draw bullet holes
@@ -82,6 +85,8 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 //        cow.setX(xRand);
 //        cow.setY(yRand);
 
+        mp = MediaPlayer.create(this, R.raw.gunshot);
+
         //if the cow is touched add a bullet hole at the touch location
         bulletHoles = new ImageView[numBullets];
         final Bitmap bitmap = ((BitmapDrawable) cow.getBackground()).getBitmap();
@@ -110,6 +115,15 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
                         bulletHole.setImageResource(R.drawable.bullethole);
 
                         layout.addView(bulletHole);
+
+                        //play gunshot for successful shot
+                        if(mp.isPlaying()){
+                            mp.stop();
+                            mp.release();
+                        }
+                        mp = MediaPlayer.create(Hunt.this, R.raw.gunshot);
+                        mp.start();
+                        mp.start();
 
                         bulletHole.getLayoutParams().height = 50;
                         bulletHole.getLayoutParams().width = 50;
@@ -160,7 +174,8 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
         //exit button
         Button exitButton = (Button) findViewById(R.id.exitButton);
         exitButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
+            public void onClick(View view) { //release sound player
+                mp.release();
                 finish();
             }
 
