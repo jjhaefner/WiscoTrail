@@ -10,13 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.wisc.ece.wiscotrail.GreenBay">
 
-    <TextView
-        android:text="Green Bay"
+    <Button
+        android:text="Go to the Farm and Fleet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="197dp"
+        android:layout_marginBottom="141dp"
+        android:id="@+id/button22"
+        android:onClick="goFarmNFleet" />
+
+    <Button
+        android:text="Continue On!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:id="@+id/button24"
+        android:onClick="backToDash"
+        android:layout_alignTop="@+id/button22"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="You've reached Green Bay!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/textView32"
-        android:textSize="28sp" />
+        android:textSize="28sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

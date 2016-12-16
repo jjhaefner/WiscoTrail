@@ -10,4 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.wisc.ece.wiscotrail.Sheboygan">
 
+    <Button
+        android:text="Go to the Farm and Fleet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="141dp"
+        android:id="@+id/button30"
+        android:onClick="goFarmNFleet" />
+
+    <Button
+        android:text="Continue On!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:id="@+id/button31"
+        android:onClick="backToDash"
+        android:layout_alignTop="@+id/button30"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="You've reached Sheboygan!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textView27"
+        android:textSize="28sp" />
 </RelativeLayout>
