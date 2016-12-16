@@ -2,7 +2,9 @@ package edu.wisc.ece.wiscotrail;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -39,9 +41,12 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     private static final float NS2S = 1.0f / 1000000000.0f;
     private float timestamp = 0;
 
-    //TODO random x position, random y position, offset calculations down below by these two
     private float xRand = 300;
     private float yRand = 300;
+    private float scale = 500;
+
+    //this is the cow on the screen
+    ImageView cow;
 
     private SensorManager sensorManager; //sensor attempt
     //gunshot sound effect
@@ -80,16 +85,22 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
         layout = (RelativeLayout) findViewById(R.id.huntingLayout);
 
+        //TODO set random attributes
         //set "cow" randomly section
-        final ImageView cow = (ImageView) findViewById(R.id.cow);
-//        cow.setX(xRand);
-//        cow.setY(yRand);
+        cow = (ImageView) findViewById(R.id.cow);
+        //cow.setX(xRand);
+        //cow.setY(yRand);
+        cow.setScaleType(ImageView.ScaleType.MATRIX);
+        scaleImage(cow, 500);
 
+        //queue up a gunshot
         mp = MediaPlayer.create(this, R.raw.gunshot);
 
         //if the cow is touched add a bullet hole at the touch location
         bulletHoles = new ImageView[numBullets];
-        final Bitmap bitmap = ((BitmapDrawable) cow.getBackground()).getBitmap();
+        Drawable drawing = cow.getDrawable();
+        final Bitmap bitmap = ((BitmapDrawable)drawing).getBitmap();
+
         cow.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View view, MotionEvent event) {
 
@@ -116,7 +127,7 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
                         layout.addView(bulletHole);
 
-                        //play gunshot for successful shot
+                        //play gunshot for successful shot (override current gunshot)
                         if(mp.isPlaying()){
                             mp.stop();
                             mp.release();
@@ -140,7 +151,7 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
                         //expend one bullet and add bullet hole to array
                         numBullets--;
                         bullets[numBullets].setVisibility(View.INVISIBLE);
-                        //TODO store bullet holes with animal
+                        //TODO store bullet holes with animal?
                         bulletHoles[numBullets] = bulletHole;
                         return true;
                     }
@@ -228,6 +239,42 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
             }
             timestamp = event.timestamp;
         }
+    }
+
+    //let us scale an image down
+    public void scaleImage(ImageView iv, int boundsDP){
+        // Get the ImageView and its bitmap
+        Drawable drawing = iv.getDrawable();
+        Bitmap bitmap = ((BitmapDrawable)drawing).getBitmap();
+        // Get current dimensions
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        // Determine how much to scale: the dimension requiring less scaling is
+        // closer to the its sie. This way the image always stays inside your
+        // bounding box AND either x/y axis touches it.
+        float xScale = ((float) boundsDP) / width;
+        float yScale = ((float) boundsDP) / height;
+        float scale = (xScale <= yScale) ? xScale : yScale;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        // Create a new bitmap and convert it to a format understood by the ImageView
+        Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+        BitmapDrawable result = new BitmapDrawable(scaledBitmap);
+        width = scaledBitmap.getWidth();
+        height = scaledBitmap.getHeight();
+
+        // Apply the scaled bitmap
+        iv.setImageBitmap(scaledBitmap);
+
+        // Now change ImageView's dimensions to match the scaled image
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) iv.getLayoutParams();
+        params.width = width;
+        params.height = height;
+        iv.setLayoutParams(params);
+
     }
 
     @Override

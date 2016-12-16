@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 /**
- * Created by Jacob on 12/12/2016.
+Not used yet
  */
 
 public class Animal extends ImageView {

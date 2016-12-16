@@ -221,7 +221,7 @@ public class Trade extends AppCompatActivity {
     public void setTheText(){
         if(!tradeCode.equals("no")) {
             tradeSitch.setText("A fellow traveler would like to trade!\n\n" +
-                    "They are offering" + numUpForTrade + " " + tradeCode +
+                    "They are offering " + numUpForTrade + " " + tradeCode +
                     " if you give them " + numTrading + " " + whatToTrade + ".");
         }
         else{
