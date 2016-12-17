@@ -67,37 +67,37 @@ public class MainScreen extends AppCompatActivity {
         switch(UserVars.weather){
             case "fair":{
                 if(UserVars.date < 60 || UserVars.date >= 334)
-                    weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.winter_sunny));
+                    weatherImage.setBackground(getResources().getDrawable(R.drawable.winter_sunny));
                 else
-                    weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.sunny));
+                    weatherImage.setBackground(getResources().getDrawable(R.drawable.sunny));
                 break;
             }
             case "cloudy":{
-                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.clouds));
+                weatherImage.setBackground(getResources().getDrawable(R.drawable.clouds));
                 break;
             }
             case "raining":{
-                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.rain));
+                weatherImage.setBackground(getResources().getDrawable(R.drawable.rain));
                 break;
             }
             case "snowing":{
-                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.snowing));
+                weatherImage.setBackground(getResources().getDrawable(R.drawable.snowing));
                 break;
             }
             case "blizzard":{
-                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.blizzard));
+                weatherImage.setBackground(getResources().getDrawable(R.drawable.blizzard));
                 break;
             }
             case "frigid":{
-                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.winter_sunny));
+                weatherImage.setBackground(getResources().getDrawable(R.drawable.winter_sunny));
                 break;
             }
             case "storming":{
-                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.storm));
+                weatherImage.setBackground(getResources().getDrawable(R.drawable.storm));
                 break;
             }
             case "apocalyptic":{
-                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.apocalypse));
+                weatherImage.setBackground(getResources().getDrawable(R.drawable.apocalypse));
                 break;
             }
         }
