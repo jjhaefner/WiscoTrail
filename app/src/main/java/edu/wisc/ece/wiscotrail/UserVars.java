@@ -54,6 +54,8 @@ public class UserVars {
     public static int MILES_SHEBOYGAN = 420;
     public static int MILES_GREEN_BAY = 470;
 
+    public static boolean music_pref = true; //true = on;
+
     public static String dateIntToString(int date){
 
         String return_date;
@@ -152,6 +154,8 @@ public class UserVars {
         mEditor.putInt("date", date);
         mEditor.putInt("ammunition", ammunition);
 
+        mEditor.putBoolean("music_prefs", music_pref);
+
         mEditor.commit();
 
         Toast.makeText(context, "Data Saved!",
@@ -198,6 +202,8 @@ public class UserVars {
         money = dataStore.getInt("money", -1);
         date = dataStore.getInt("date", -1);
         ammunition = dataStore.getInt("ammunition", -1);
+
+        music_pref = dataStore.getBoolean("music_prefs", false);
 
         Toast.makeText(context, "Loaded previous game!",
                 Toast.LENGTH_SHORT).show();
