@@ -11,12 +11,29 @@
     tools:context="edu.wisc.ece.wiscotrail.DevilsLake">
 
     <TextView
-        android:text="Devil's Lake"
+        android:text="You've reached Devil's Lake!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="197dp"
         android:id="@+id/textView16"
-        android:textSize="28sp" />
+        android:textSize="28sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Continue on!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="62dp"
+        android:id="@+id/button32" />
+
+    <Button
+        android:text="Check out Devil's Lake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button32"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/button33" />
 </RelativeLayout>

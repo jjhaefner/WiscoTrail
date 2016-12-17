@@ -10,13 +10,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.wisc.ece.wiscotrail.NewGlarus">
 
-    <TextView
-        android:text="New Glarus"
+    <Button
+        android:text="Go to the Farm and Fleet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="197dp"
+        android:layout_marginBottom="141dp"
+        android:id="@+id/button27"
+        android:onClick="goFarmNFleet" />
+
+    <Button
+        android:text="Continue On!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:id="@+id/button28"
+        android:onClick="backToDash"
+        android:layout_alignTop="@+id/button27"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="You've reached New Glarus!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:id="@+id/textView15"
-        android:textSize="28sp" />
+        android:textSize="28sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Drink a spotted cow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button27"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:id="@+id/button29" />
 </RelativeLayout>

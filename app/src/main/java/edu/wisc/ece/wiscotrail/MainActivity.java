@@ -31,9 +31,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startTrail(View view){
-        //Intent intent = new Intent(this, StartTrail.class);
-        Intent intent = new Intent(this, RiverCrossing.class);
+        Intent intent = new Intent(this, StartTrail.class);
         startActivity(intent);
+    }
+
+    public void loadGame(View view){
+        if(UserVars.loadData(this)){
+            Intent intent = new Intent(this, MainScreen.class);
+            startActivity(intent);
+        }
+
     }
 
     public void learnAboutTrail(View view){
@@ -48,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void endGame(View view){
         //end game, quit all activities
+        finish();
         System.exit(1);
     }
 }

@@ -46,6 +46,7 @@ public class PickParty extends AppCompatActivity {
             UserVars.partyMember4 = name4.getText().toString().trim();
 
             Intent intent = new Intent(this, DepartureMonth.class);
+            finish();
             startActivity(intent);
         }
         else{

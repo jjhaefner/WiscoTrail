@@ -43,7 +43,7 @@
         android:text="Load Game"
         android:id="@+id/loadGame"
         android:layout_marginBottom="11dp"
-        android:onClick="startTrail"
+        android:onClick="loadGame"
         android:layout_above="@+id/LearnAboutTheTrailBtn"
         android:layout_alignLeft="@+id/newGame"
         android:layout_alignStart="@+id/newGame" />

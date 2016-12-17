@@ -1,7 +1,9 @@
 package edu.wisc.ece.wiscotrail;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -33,29 +35,24 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
     private static final double EPSILON = 0.05;
     private float[] currentRotationMatrix = new float[9];
     private float[] gyroscopeOrientation = new float[3];
-    TextView test1;
-    TextView test2;
+    double total_rot = 0;
+    double artificial_center = 0;
     TextView oriView1;
     Random rand;
     ImageView wagon_img;
+    long tStart;
+    long elapsed_secs = 0;
+    boolean lockHeld = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_river_crossing);
         wagon_img = (ImageView)findViewById(R.id.wagon_img);
-        test1 = (TextView)findViewById(R.id.testView1);
-        test2 = (TextView)findViewById(R.id.testView2);
-
+        rand = new Random();
         wagon_img.setScaleType(ImageView.ScaleType.MATRIX);
         scaleImage(wagon_img, 150);
-        /*matrix = wagon_img.getImageMatrix();
-        float[] vals = new float[9];
-        matrix.getValues(vals);
-        float scaleX = 1 / vals[Matrix.MTRANS_X];
-        float scaleY = 1 / vals[Matrix.MTRANS_Y];
-        matrix.postScale(scaleX, scaleY);
-        wagon_img.setImageMatrix(matrix);*/
+        tStart = System.currentTimeMillis();
 
         oriView1 = (TextView)findViewById(R.id.orientationVal1);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -73,7 +70,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
             doGyroscopeThings(event);
         }
         else if(event.sensor.getType() == Sensor.TYPE_ORIENTATION){
-            doOrientationThings(event);
+            doOrientationThings(event, rand);
 
         }
 
@@ -124,28 +121,57 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 
     }
 
-    public void doOrientationThings(SensorEvent event){
+    public void doOrientationThings(SensorEvent event, Random irand){
 
-        /*angle = 360 - angle;
-        Matrix matrix=new Matrix();
-        rose.setScaleType(ScaleType.MATRIX);
-        pivX = rose.getDrawable().getBounds().width()/2;
-        pivY = rose.getDrawable().getBounds().height()/2;
-        matrix.preRotate((float) angle, pivX, pivY);
-        rose.setImageMatrix(matrix);*/
-        scaleImage(wagon_img, 150);
+        elapsed_secs = System.currentTimeMillis() - tStart;
+        if(elapsed_secs > 30000) {
+            if(!lockHeld) {
+                lockHeld = true;
+                crossedSuccessfully();
+            }
+        }
+        double rand_num = Math.sqrt(irand.nextDouble()); //rand double btwn 0.0 and 1.0
+        double rand_skew = (rand_num * 16) - 8; //get it to be a double between -2.000 and 2.000
+        artificial_center += rand_skew;
+        float x_rot = (-1) * event.values[2];
 
-        float x_rot = event.values[2];
-        oriView1.setText(Float.toString(x_rot));
-        float pivotX = wagon_img.getX() + (wagon_img.getWidth()  / 2);
-        float pivotY = wagon_img.getY() + (wagon_img.getHeight() / 2);
-        //matrix = wagon_img.getImageMatrix();
-        matrix.preRotate((float) (x_rot/2), pivotX, pivotY);
-        test1.setText(Integer.toString(wagon_img.getWidth()));
-        test2.setText(Integer.toString(wagon_img.getHeight()));
-        //2wagon_img.set
+        float pivotX = (wagon_img.getWidth()  / 2);
+        float pivotY = (wagon_img.getHeight() / 2);
+
+        if(total_rot + rand_skew + (x_rot/1.5) > 75) {
+            total_rot = 75;
+            if(!lockHeld) {
+                lockHeld = true;
+                sunkWagon();
+            }
+        }
+        else if(total_rot + rand_skew + (x_rot/1.5) < -75) {
+            total_rot = -75;
+            if(!lockHeld) {
+                lockHeld = true;
+                sunkWagon();
+            }
+        }
+        else
+            total_rot += rand_skew + (x_rot/1.5);
+        oriView1.setText(Float.toString(elapsed_secs));
+        //if not maxed out, rotate more
+        if((total_rot < 75) && (total_rot > -75))
+            matrix.preRotate((float)((x_rot/1.5)+ rand_skew), pivotX, pivotY);
+
+
         wagon_img.setImageMatrix(matrix);
     }
+
+    public void crossedSuccessfully(){
+        endCrossingAlert("You made it across the river!");
+    }
+
+    public void sunkWagon(){
+        //Todo: leave activity and calculate lost items
+        endCrossingAlert("Your wagon has sunk");
+    }
+
 
     public void doGyroscopeThings(SensorEvent event){
         /*
@@ -204,7 +230,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 */
     }
 
-    private float[] matrixMultiplication(float[] a, float[] b)
+    /*private float[] matrixMultiplication(float[] a, float[] b)
     {
         float[] result = new float[9];
 
@@ -221,6 +247,20 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         result[8] = a[6] * b[2] + a[7] * b[5] + a[8] * b[8];
 
         return result;
+    }*/
+
+    public void endCrossingAlert(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                });
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
 

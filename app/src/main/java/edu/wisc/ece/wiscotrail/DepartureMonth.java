@@ -17,16 +17,19 @@ public class DepartureMonth extends AppCompatActivity {
     public void goAugust(View view){
         UserVars.date = 213;
         Intent intent = new Intent(this, FarmNFleet.class);
+        finish();
         startActivity(intent);
     }
     public void goSeptember(View view){
         UserVars.date = 244;
         Intent intent = new Intent(this, FarmNFleet.class);
+        finish();
         startActivity(intent);
     }
     public void goOctober(View view){
         UserVars.date = 274;
         Intent intent = new Intent(this, FarmNFleet.class);
+        finish();
         startActivity(intent);
     }
 

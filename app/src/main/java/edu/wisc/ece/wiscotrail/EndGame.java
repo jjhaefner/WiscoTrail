@@ -22,6 +22,7 @@ public class EndGame extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Intent intent = new Intent(this, MainActivity.class);
+        finish();
         startActivity(intent);
         return super.onTouchEvent(event);
     }
