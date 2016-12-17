@@ -110,7 +110,6 @@ public class MainScreen extends AppCompatActivity {
         TextView paceTV = (TextView)findViewById(R.id.pace_field);
         TextView moraleTV = (TextView)findViewById(R.id.morale_field);
         TextView moneyTV = (TextView)findViewById(R.id.money_field);
-        
 
 
         dateTV.setText(UserVars.dateIntToString(UserVars.date));
