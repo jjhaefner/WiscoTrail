@@ -5,29 +5,28 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
 public class MainScreen extends AppCompatActivity {
 
     public static Boolean milestoneSet = false;
-    BackgroundSound mBackgroundSound;
-
+    BackgroundSound mBackgroundSound = new BackgroundSound();
+    ImageView weatherImage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-
-
-
+        weatherImage = (ImageView)findViewById(R.id.weatherImage);
+        mBackgroundSound.execute();
 
 
         TextView dateTV = (TextView)findViewById(R.id.date_field);
@@ -63,6 +62,44 @@ public class MainScreen extends AppCompatActivity {
         if(UserVars.music_pref) {
             mBackgroundSound = new BackgroundSound();
             mBackgroundSound.execute();
+        }
+
+        switch(UserVars.weather){
+            case "fair":{
+                if(UserVars.date < 60 || UserVars.date >= 334)
+                    weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.winter_sunny));
+                else
+                    weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.sunny));
+                break;
+            }
+            case "cloudy":{
+                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.clouds));
+                break;
+            }
+            case "raining":{
+                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.rain));
+                break;
+            }
+            case "snowing":{
+                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.snowing));
+                break;
+            }
+            case "blizzard":{
+                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.blizzard));
+                break;
+            }
+            case "frigid":{
+                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.winter_sunny));
+                break;
+            }
+            case "storming":{
+                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.storm));
+                break;
+            }
+            case "apocalyptic":{
+                weatherImage.setImageDrawable(getResources().getDrawable(R.drawable.apocalypse));
+                break;
+            }
         }
 
         if(!milestoneSet) {
@@ -185,7 +222,6 @@ public class MainScreen extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        Log.e("Options", "Options");
         switch (item.getItemId()) {
             case R.id.save_game:
                 UserVars.saveData(this);
@@ -193,23 +229,9 @@ public class MainScreen extends AppCompatActivity {
             case R.id.quit:
                 finish();
                 System.exit(1);
-                break;
-            case R.id.music_toggle:
-                Log.e("Music_Toggle", "Music_Toggle");
-                UserVars.music_pref = !UserVars.music_pref;
-                if(!UserVars.music_pref){
-                    mBackgroundSound.cancel(true);
-                    Log.e("TurnOFF", "TurnOFF");
-                }
-                else{
-                    mBackgroundSound = new BackgroundSound();
-                    mBackgroundSound.execute();
-                }
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-        return false;
     }
 
     @Override
@@ -221,28 +243,15 @@ public class MainScreen extends AppCompatActivity {
 
     public class BackgroundSound extends AsyncTask<Void, Void, Void> {
 
-        MediaPlayer player = MediaPlayer.create(MainScreen.this, R.raw.ashokan);
-
         @Override
         protected Void doInBackground(Void... params) {
-
+            MediaPlayer player = MediaPlayer.create(MainScreen.this, R.raw.ashokan);
             player.setLooping(true); // Set looping
             player.setVolume(1.0f, 1.0f);
             player.start();
 
-            while(true){
-                if(isCancelled()){
-                    Log.e("Cancelled", "Cancelled");
-                    player.stop();
-                    break;
-                }
-            }
-
             return null;
-
         }
-
-
 
     }
 }

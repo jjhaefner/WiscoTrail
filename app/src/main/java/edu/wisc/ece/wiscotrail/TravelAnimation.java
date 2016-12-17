@@ -21,8 +21,10 @@ public class TravelAnimation extends AppCompatActivity {
 
         Random myRandom = new Random();
         //reset the milestone marker once mileage has been increased
+
         determineRandomEvent(myRandom);
         changeMileage();
+
 
         calculateFood();
         calculateAlcohol();
