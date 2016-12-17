@@ -22,6 +22,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import java.util.Random;
+
 import static java.lang.Math.abs;
 
 public class Hunt extends AppCompatActivity implements SensorEventListener {
@@ -41,7 +43,7 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     private static final float NS2S = 1.0f / 1000000000.0f;
     private float timestamp = 0;
 
-    private float xRand = 300;
+    private float xRand = 1000;
     private float yRand = 300;
     private float scale = 500;
 
@@ -87,11 +89,12 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
         //TODO set random attributes
         //set "cow" randomly section
+        Random rand = new Random();
         cow = (ImageView) findViewById(R.id.cow);
-        //cow.setX(xRand);
-        //cow.setY(yRand);
+        cow.setX(3000 - rand.nextInt(6000));
+        cow.setY(300 - rand.nextInt(600));
         cow.setScaleType(ImageView.ScaleType.MATRIX);
-        scaleImage(cow, 500);
+        scaleImage(cow, (600 - rand.nextInt(500)));
 
         //queue up a gunshot
         mp = MediaPlayer.create(this, R.raw.gunshot);
