@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.wisc.ece.wiscotrail.NewGlarus">
+    tools:context="edu.wisc.ece.wiscotrail.NewGlarus"
+    android:background="@drawable/new_glarus">
 
     <Button
         android:text="Go to the Farm and Fleet"
@@ -39,7 +40,8 @@
         android:textSize="28sp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@color/almost_white"/>
 
     <Button
         android:text="Drink a spotted cow"
@@ -48,5 +50,6 @@
         android:layout_above="@+id/button27"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp"
-        android:id="@+id/button29" />
+        android:id="@+id/button29"
+        android:onClick="drinkBeer"/>
 </RelativeLayout>

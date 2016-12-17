@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.wisc.ece.wiscotrail">
+
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -95,7 +97,7 @@
         <activity
             android:name=".Hunt"
             android:screenOrientation="portrait"
-            android:theme="@style/CameraTheme"/>
+            android:theme="@style/CameraTheme" />
         <activity
             android:name=".TravelSettings"
             android:screenOrientation="portrait" />
@@ -111,9 +113,11 @@
         <activity
             android:name=".PartyHealth"
             android:screenOrientation="portrait" />
-        <activity android:name=".RiverCrossing"
+        <activity
+            android:name=".RiverCrossing"
             android:screenOrientation="portrait" />
-
+        <activity android:name=".DevilsLakeView1" />
+        <activity android:name=".DevilsLakeView2"></activity>
     </application>
 
 </manifest>

@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.wisc.ece.wiscotrail.MississippiRiver">
+    tools:context="edu.wisc.ece.wiscotrail.MississippiRiver"
+    android:background="@drawable/mississippi_river">
 
     <TextView
         android:text="You have reached the Mississippi River!"
@@ -22,22 +23,22 @@
         android:layout_alignParentStart="true" />
 
     <Button
+        android:text="Attempt to ford the river on your own"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/goToRiverCrossingBtn1"
+        android:onClick="goToRiverCrossing"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="147dp" />
+
+    <Button
         android:text="Pay $200 to ride the ferry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/payToCrossBtn1"
-        android:layout_below="@+id/textView31"
+        android:onClick="payAndTakeFerry"
+        android:layout_above="@+id/goToRiverCrossingBtn1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="102dp"
-        android:onClick="payAndTakeFerry"/>
-
-    <Button
-        android:text="Attempt to ford the river on your own"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/payToCrossBtn1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
-        android:id="@+id/goToRiverCrossingBtn1"
-        android:onClick="goToRiverCrossing"/>
+        android:layout_marginBottom="26dp" />
 </RelativeLayout>
