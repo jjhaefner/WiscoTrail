@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_devils_lake"
     android:layout_width="match_parent"
@@ -8,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.wisc.ece.wiscotrail.DevilsLake">
+    tools:context="edu.wisc.ece.wiscotrail.DevilsLake"
+    android:background="@drawable/devils_lake1">
 
     <TextView
         android:text="You've reached Devil's Lake!"
@@ -17,7 +19,8 @@
         android:id="@+id/textView16"
         android:textSize="28sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        />
 
     <Button
         android:text="Continue on!"
@@ -36,4 +39,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
         android:id="@+id/button33" />
+
 </RelativeLayout>

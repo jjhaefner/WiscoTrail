@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.wisc.ece.wiscotrail.RockRiver">
+    tools:context="edu.wisc.ece.wiscotrail.RockRiver"
+    android:background="@drawable/rock_river">
 
     <TextView
         android:text="You have reached the Rock River!"
@@ -21,22 +22,22 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Pay $200 to take the ferry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView14"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="96dp"
-        android:id="@+id/payToCrossBtn3"
-        android:onClick="payAndTakeFerry"/>
-
-    <Button
         android:text="Attempt to  ford the river on your own"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/payToCrossBtn3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
         android:id="@+id/goToRiverCrossingBtn3"
-        android:onClick="goToRiverCrossing"/>
+        android:onClick="goToRiverCrossing"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="71dp" />
+
+    <Button
+        android:text="Pay $200 to take the ferry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/payToCrossBtn3"
+        android:onClick="payAndTakeFerry"
+        android:layout_above="@+id/goToRiverCrossingBtn3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp" />
 </RelativeLayout>
