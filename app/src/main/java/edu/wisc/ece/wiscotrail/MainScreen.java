@@ -1,6 +1,8 @@
 package edu.wisc.ece.wiscotrail;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 public class MainScreen extends AppCompatActivity {
 
     public static Boolean milestoneSet = false;
+    BackgroundSound mBackgroundSound = new BackgroundSound();
 
 
 
@@ -21,6 +24,8 @@ public class MainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+
+        mBackgroundSound.execute();
 
         if(!milestoneSet) {
 
@@ -126,6 +131,10 @@ public class MainScreen extends AppCompatActivity {
         //Morale is a string
         moraleTV.setText(UserVars.morale);
         moneyTV.setText("$" + UserVars.money);
+
+
+
+
     }
 
     public void continueOn(View view){
@@ -178,4 +187,27 @@ public class MainScreen extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        mBackgroundSound.cancel(true);
+    }
+
+
+    public class BackgroundSound extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            MediaPlayer player = MediaPlayer.create(MainScreen.this, R.raw.ashokan);
+            player.setLooping(true); // Set looping
+            player.setVolume(1.0f, 1.0f);
+            player.start();
+
+            return null;
+        }
+
+    }
 }
+
+
