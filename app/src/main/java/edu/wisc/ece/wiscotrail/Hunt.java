@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -45,12 +46,16 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     private static final float NS2S = 1.0f / 1000000000.0f;
     private float timestamp = 0;
 
+    int meatGained = 0;
+
     //this is the cow on the screen
     ImageView cow;
 
     private SensorManager sensorManager; //sensor attempt
     //gunshot sound effect
     MediaPlayer mp;
+
+    Random rand = new Random();
 
     RelativeLayout layout;
     ImageView bulletHole;  //used to draw bullet holes
@@ -107,7 +112,6 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
         layout = (RelativeLayout) findViewById(R.id.huntingLayout);
 
         //set "cow" randomly section
-        Random rand = new Random();
         cow = (ImageView) findViewById(R.id.cow);
         cow.setX(3000 - rand.nextInt(6000));
         cow.setY(300 - rand.nextInt(600));
@@ -167,8 +171,12 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
                         //////////////////////////////////////////////////////////////////////
 
                         bulletHoles[numBullets] = bulletHole;
+
+                        checkKill();
+
                         return true;
                     }
+
                 }
                 return false;
             }
@@ -201,6 +209,10 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
         exitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) { //release sound player
                 mp.release();
+                //reward meat
+                UserVars.food_lbs += meatGained;
+                Toast toast = Toast.makeText(Hunt.this, "You were able to take back " + meatGained + " lbs of meat", Toast.LENGTH_LONG);
+                toast.show();
                 finish();
             }
 
@@ -297,7 +309,6 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     }
 
     public void shootGun(){
-
         //play gunshot for successful shot (override current gunshot)
         if(mp.isPlaying()){
             mp.stop();
@@ -310,6 +321,29 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
         numBullets--;
         UserVars.ammunition--;
         bullets[numBullets].setVisibility(View.INVISIBLE);
+    }
+
+    public void checkKill(){
+
+        //check if cow is dead and add meat
+        int count = 0;
+        for(ImageView i: bulletHoles){
+            if(i != null){
+                count++;
+            }
+        }
+        if (count >=3){
+            cow.setVisibility(View.GONE);
+
+            for(ImageView i: bulletHoles){
+                if(i != null){
+                    i.setVisibility(View.GONE);
+                }
+            }
+            bulletHoles = new ImageView[numBullets];
+           meatGained += 40 + rand.nextInt(60);
+        }
+
     }
 
 }
