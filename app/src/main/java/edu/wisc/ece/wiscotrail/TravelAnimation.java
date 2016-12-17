@@ -465,43 +465,43 @@ public class TravelAnimation extends AppCompatActivity {
 
         //if entering a particular milestone this round...
         if(prev_miles < UserVars.MILES_MISSISSIPPI_RIVER &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_MISSISSIPPI_RIVER)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_MISSISSIPPI_RIVER)){
             UserVars.mileage = UserVars.MILES_MISSISSIPPI_RIVER;
         }
         else if(prev_miles < UserVars.MILES_EAU_CLAIRE &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_EAU_CLAIRE)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_EAU_CLAIRE)){
             UserVars.mileage = UserVars.MILES_EAU_CLAIRE;
         }
         else if(prev_miles < UserVars.MILES_DEVILS_LAKE &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_DEVILS_LAKE)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_DEVILS_LAKE)){
             UserVars.mileage = UserVars.MILES_DEVILS_LAKE;
         }
         else if(prev_miles < UserVars.MILES_WISCONSIN_RIVER &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_WISCONSIN_RIVER)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_WISCONSIN_RIVER)){
             UserVars.mileage = UserVars.MILES_WISCONSIN_RIVER;
         }
         else if(prev_miles < UserVars.MILES_MADISON &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_MADISON)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_MADISON)){
             UserVars.mileage = UserVars.MILES_MADISON;
         }
         else if(prev_miles < UserVars.MILES_NEW_GLARUS &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_NEW_GLARUS)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_NEW_GLARUS)){
             UserVars.mileage = UserVars.MILES_NEW_GLARUS;
         }
         else if(prev_miles < UserVars.MILES_ROCK_RIVER &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_ROCK_RIVER)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_ROCK_RIVER)){
             UserVars.mileage = UserVars.MILES_ROCK_RIVER;
         }
         else if(prev_miles < UserVars.MILES_MILWAUKEE &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_MILWAUKEE)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_MILWAUKEE)){
             UserVars.mileage = UserVars.MILES_MILWAUKEE;
         }
         else if(prev_miles < UserVars.MILES_SHEBOYGAN &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_SHEBOYGAN)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_SHEBOYGAN)){
             UserVars.mileage = UserVars.MILES_SHEBOYGAN;
         }
         else if(prev_miles < UserVars.MILES_GREEN_BAY &&
-                (UserVars.mileage+prog_miles > UserVars.MILES_GREEN_BAY)){
+                (UserVars.mileage+prog_miles >= UserVars.MILES_GREEN_BAY)){
             UserVars.mileage = UserVars.MILES_GREEN_BAY;
         }
         else {

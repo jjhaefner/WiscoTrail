@@ -33,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
     public void startTrail(View view){
         Intent intent = new Intent(this, StartTrail.class);
         startActivity(intent);
+        finish();
     }
 
     public void loadGame(View view){
         if(UserVars.loadData(this)){
             Intent intent = new Intent(this, MainScreen.class);
             startActivity(intent);
+            finish();
         }
 
     }

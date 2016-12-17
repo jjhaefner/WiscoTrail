@@ -277,9 +277,9 @@ public class Shop extends AppCompatActivity {
             UserVars.ammunition += amtAmmunition;
             UserVars.money -= shoppingTotal;
 
-            Intent intent = new Intent(this, FarmNFleet.class);
+
             finish();
-            startActivity(intent);
+
         }
         else{
             Toast.makeText(getApplicationContext(),
