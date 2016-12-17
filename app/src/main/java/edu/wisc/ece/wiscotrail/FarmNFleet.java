@@ -13,6 +13,11 @@ public class FarmNFleet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farm_nfleet);
 
+
+
+    }
+    protected void onResume() {
+        super.onResume();
         TextView numOxen = (TextView)findViewById(R.id.numOxen);
         TextView numFood = (TextView)findViewById(R.id.numFood);
         TextView numAlcohol = (TextView)findViewById(R.id.numAlcohol);
@@ -24,7 +29,6 @@ public class FarmNFleet extends AppCompatActivity {
         numAlcohol.setText(UserVars.alcohol_gallons + " gallons");
         numClothing.setText(UserVars.num_clothes + " sets");
         numAmmunition.setText(Integer.toString(UserVars.ammunition));
-
     }
 
     public void goNext(View view){
