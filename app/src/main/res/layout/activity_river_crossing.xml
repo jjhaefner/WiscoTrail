@@ -13,7 +13,6 @@
     tools:context="edu.wisc.ece.wiscotrail.RiverCrossing">
 
 
-
     <TextView
         android:text="x:"
         android:layout_width="wrap_content"
