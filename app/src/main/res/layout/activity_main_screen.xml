@@ -266,5 +266,13 @@
         tools:layout_editor_absoluteY="20dp"
         tools:layout_editor_absoluteX="0dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="177dp"
+        app:srcCompat="@drawable/sunny"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:id="@+id/weatherImage" />
+
 
 </android.support.constraint.ConstraintLayout>

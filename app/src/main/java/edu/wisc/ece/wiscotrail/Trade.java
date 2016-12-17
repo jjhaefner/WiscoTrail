@@ -33,6 +33,15 @@ public class Trade extends AppCompatActivity {
         numUpForTrade = 0;
         numTrading = 0;
 
+        //update date, food, alcohol, weather
+        UserVars.date++;
+        TravelAnimation.calculateFood();
+        TravelAnimation.calculateAlcohol();
+        TravelAnimation.determineWeather(myRandom);
+        TravelAnimation.determineHealth(myRandom, this);
+        TravelAnimation.calculateMorale();
+
+
         randomTradeGenerator();
         setTheText();
         String btnText = "give " + numTrading + " " + whatToTrade + ".";
@@ -53,7 +62,7 @@ public class Trade extends AppCompatActivity {
         double randNum1 = myRandom.nextDouble() * 100; //put into percentage
         double randNum2 = myRandom.nextDouble() * 100; //put into percentage
         if(randNum1 < 10){
-            tradeCode = "oxen";
+            tradeCode = "sets of oxen";
             //money
             if(randNum2 < 20){
                 whatToTrade = "dollars";
@@ -96,7 +105,7 @@ public class Trade extends AppCompatActivity {
             }
             //oxen
             else if(randNum2 < 40){
-                whatToTrade = "oxen";
+                whatToTrade = "sets of oxen";
                 numUpForTrade = myRandom.nextInt(3) + 3; //anywhere btwn 3-5 gallons of alcohol
                 numTrading = myRandom.nextInt(2) + 1; //anywhere btwn 1-2 Oxen
             }
@@ -136,7 +145,7 @@ public class Trade extends AppCompatActivity {
             }
             //oxen
             else if(randNum2 < 60){
-                whatToTrade = "oxen";
+                whatToTrade = "sets of oxen";
                 numUpForTrade = myRandom.nextInt(16) + 40; //anywhere btwn 40-55 lbs of food
                 numTrading = myRandom.nextInt(2) + 1; //anywhere btwn 1-2 Oxen
             }
@@ -176,7 +185,7 @@ public class Trade extends AppCompatActivity {
             }
             //oxen
             else if(randNum2 < 80){
-                whatToTrade = "oxen";
+                whatToTrade = "sets of oxen";
                 numUpForTrade = myRandom.nextInt(3) + 3; //anywhere btwn 3-5 sets of clothing
                 numTrading = myRandom.nextInt(2) + 1; //anywhere btwn 1-2 Oxen
             }
@@ -216,7 +225,7 @@ public class Trade extends AppCompatActivity {
             }
             //oxen
             else{
-                whatToTrade = "oxen";
+                whatToTrade = "sets of oxen";
                 numUpForTrade = myRandom.nextInt(21) + 40; //anywhere btwn 40-60 bullets
                 numTrading = myRandom.nextInt(2) + 1; //anywhere btwn 1-2 Oxen
             }
@@ -243,9 +252,11 @@ public class Trade extends AppCompatActivity {
             //First determine if you have enough of whatever it is you're paying with
             //if not, show a toast and finish the activity.
             switch(whatToTrade){
-                case "oxen":{
+                case "sets of oxen":{
                     if(UserVars.num_oxen >= numTrading){
                         UserVars.num_oxen -= numTrading;
+                        eventAlert("You traded " + numTrading + " " + whatToTrade + " for "
+                                + numUpForTrade + " " + tradeCode + ".");
                     }
                     else{
                         //create alert then finish activity with dialogue
@@ -256,6 +267,8 @@ public class Trade extends AppCompatActivity {
                 case "lbs of food":{
                     if(UserVars.food_lbs >= numTrading){
                         UserVars.food_lbs -= numTrading;
+                        eventAlert("You traded " + numTrading + " " + whatToTrade + " for "
+                                + numUpForTrade + " " + tradeCode + ".");
                     }
                     else{
                         //create alert then finish activity with dialogue
@@ -266,6 +279,8 @@ public class Trade extends AppCompatActivity {
                 case "gallons of alcohol":{
                     if(UserVars.alcohol_gallons >= numTrading){
                         UserVars.alcohol_gallons -= numTrading;
+                        eventAlert("You traded " + numTrading + " " + whatToTrade + " for "
+                                + numUpForTrade + " " + tradeCode + ".");
                     }
                     else{
                         //create alert then finish activity with dialogue
@@ -276,6 +291,8 @@ public class Trade extends AppCompatActivity {
                 case "sets of clothing":{
                     if(UserVars.num_clothes >= numTrading){
                         UserVars.num_clothes -= numTrading;
+                        eventAlert("You traded " + numTrading + " " + whatToTrade + " for "
+                                + numUpForTrade + " " + tradeCode + ".");
                     }
                     else{
                         //create alert then finish activity with dialogue
@@ -286,6 +303,8 @@ public class Trade extends AppCompatActivity {
                 case "bullets":{
                     if(UserVars.ammunition >= numTrading){
                         UserVars.ammunition -= numTrading;
+                        eventAlert("You traded " + numTrading + " " + whatToTrade + " for "
+                                + numUpForTrade + " " + tradeCode + ".");
                     }
                     else{
                         //create alert then finish activity with dialogue
@@ -295,6 +314,8 @@ public class Trade extends AppCompatActivity {
                 case "dollars":{
                     if(UserVars.money >= numTrading){
                         UserVars.money -= numTrading;
+                        eventAlert("You traded " + numTrading + " " + whatToTrade + " for "
+                                + numUpForTrade + " " + tradeCode + ".");
                     }
                     else{
                         //create alert then finish activity with dialogue
@@ -309,7 +330,7 @@ public class Trade extends AppCompatActivity {
             }
             //if you've gotten here, you're set to  receive your thing
             switch(tradeCode){
-                case "oxen":{
+                case "sets of oxen":{
                         UserVars.num_oxen += numUpForTrade;
                         eventAlert("You traded " + numTrading + " " + whatToTrade + " for "
                         + numUpForTrade + " " + tradeCode + ".");
