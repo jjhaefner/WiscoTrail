@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Music Toggle"
+        android:id="@+id/music_toggle"/>
     <item android:id="@+id/save_game"
         android:title="Save Game" />
     <item android:id="@+id/quit"
