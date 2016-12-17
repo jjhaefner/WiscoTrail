@@ -15,6 +15,7 @@ import android.hardware.SensorEventListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,15 +27,7 @@ import android.graphics.Matrix;
 public class RiverCrossing extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager mSensorManager;
-    private Sensor mSensor;
     Matrix matrix = new Matrix();
-    // Create a constant to convert nanoseconds to seconds.
-    private static final float NS2S = 1.0f / 1000000000.0f;
-    private final float[] deltaRotationVector = new float[4];
-    private float timestamp;
-    private static final double EPSILON = 0.05;
-    private float[] currentRotationMatrix = new float[9];
-    private float[] gyroscopeOrientation = new float[3];
     double total_rot = 0;
     double artificial_center = 0;
     TextView oriView1;
@@ -48,6 +41,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_river_crossing);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         wagon_img = (ImageView)findViewById(R.id.wagon_img);
         rand = new Random();
         wagon_img.setScaleType(ImageView.ScaleType.MATRIX);
@@ -57,19 +51,14 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         oriView1 = (TextView)findViewById(R.id.orientationVal1);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(this,
-                mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE),
-                SensorManager.SENSOR_DELAY_NORMAL);
-        mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
                 SensorManager.SENSOR_DELAY_NORMAL);
 
     }
 
     public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType() == Sensor.TYPE_GYROSCOPE){
-            doGyroscopeThings(event);
-        }
-        else if(event.sensor.getType() == Sensor.TYPE_ORIENTATION){
+
+        if(event.sensor.getType() == Sensor.TYPE_ORIENTATION){
             doOrientationThings(event, rand);
 
         }
@@ -124,44 +113,55 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
     public void doOrientationThings(SensorEvent event, Random irand){
 
         elapsed_secs = System.currentTimeMillis() - tStart;
+        //grace period of 3 seconds
+        if(elapsed_secs < 2000){
+            return;
+        }
+        //after 30 seconds you cross the river
         if(elapsed_secs > 30000) {
             if(!lockHeld) {
                 lockHeld = true;
                 crossedSuccessfully();
             }
         }
-        double rand_num = Math.sqrt(irand.nextDouble()); //rand double btwn 0.0 and 1.0
-        double rand_skew = (rand_num * 16) - 8; //get it to be a double between -2.000 and 2.000
-        artificial_center += rand_skew;
-        float x_rot = (-1) * event.values[2];
 
-        float pivotX = (wagon_img.getWidth()  / 2);
-        float pivotY = (wagon_img.getHeight() / 2);
-
-        if(total_rot + rand_skew + (x_rot/1.5) > 75) {
-            total_rot = 75;
-            if(!lockHeld) {
-                lockHeld = true;
-                sunkWagon();
+            double rand_num = (irand.nextDouble()*2) -1; //rand double btwn 0.0 and 1.0
+            if(rand_num < 0){
+                rand_num = -1*(Math.sqrt(Math.abs(rand_num)));
             }
-        }
-        else if(total_rot + rand_skew + (x_rot/1.5) < -75) {
-            total_rot = -75;
-            if(!lockHeld) {
-                lockHeld = true;
-                sunkWagon();
+            else{
+                rand_num = Math.sqrt(rand_num);
             }
+            double rand_skew = rand_num * 8; //now you have a random number btwn -8 and 8, more heavily weighted towards the edges
+            //double rand_skew = (rand_num * 16) - 8; //get it to be a double between -2.000 and 2.000
+            artificial_center += rand_skew;
+            float x_rot = (-1) * event.values[2];
+
+            float pivotX = (wagon_img.getWidth() / 2);
+            float pivotY = (wagon_img.getHeight() / 2);
+
+            if (total_rot + rand_skew + (x_rot / 1.5) > 75) {
+                total_rot = 75;
+                if (!lockHeld) {
+                    lockHeld = true;
+                    sunkWagon();
+                }
+            } else if (total_rot + rand_skew + (x_rot / 1.5) < -75) {
+                total_rot = -75;
+                if (!lockHeld) {
+                    lockHeld = true;
+                    sunkWagon();
+                }
+            } else
+                total_rot += rand_skew + (x_rot / 1.5);
+            oriView1.setText(Float.toString(elapsed_secs));
+            //if not maxed out, rotate more
+            if ((total_rot < 75) && (total_rot > -75))
+                matrix.preRotate((float) ((x_rot / 1.5) + rand_skew), pivotX, pivotY);
+
+            wagon_img.setImageMatrix(matrix);
         }
-        else
-            total_rot += rand_skew + (x_rot/1.5);
-        oriView1.setText(Float.toString(elapsed_secs));
-        //if not maxed out, rotate more
-        if((total_rot < 75) && (total_rot > -75))
-            matrix.preRotate((float)((x_rot/1.5)+ rand_skew), pivotX, pivotY);
 
-
-        wagon_img.setImageMatrix(matrix);
-    }
 
     public void crossedSuccessfully(){
         endCrossingAlert("You made it across the river!");
@@ -171,83 +171,6 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         //Todo: leave activity and calculate lost items
         endCrossingAlert("Your wagon has sunk");
     }
-
-
-    public void doGyroscopeThings(SensorEvent event){
-        /*
-        // This timestep's delta rotation to be multiplied by the current rotation
-        // after computing it from the gyro sample data.
-        float axisX = 0;
-        float axisY = 0;
-        float axisZ = 0;
-        float omegaMagnitude = 0;
-        if (timestamp != 0) {
-            final float dT = (event.timestamp - timestamp) * NS2S;
-            // Axis of the rotation sample, not normalized yet.
-            axisX = event.values[0];
-            axisY = event.values[1];
-            axisZ = event.values[2];
-
-            // Calculate the angular speed of the sample
-            omegaMagnitude = (float)Math.sqrt(axisX*axisX + axisY*axisY + axisZ*axisZ);
-
-            // Normalize the rotation vector if it's big enough to get the axis
-            // (that is, EPSILON should represent your maximum allowable margin of error)
-
-            if (omegaMagnitude > EPSILON) {
-                axisX /= omegaMagnitude;
-                axisY /= omegaMagnitude;
-                axisZ /= omegaMagnitude;
-            }
-
-            // Integrate around this axis with the angular speed by the timestep
-            // in order to get a delta rotation from this sample over the timestep
-            // We will convert this axis-angle representation of the delta rotation
-            // into a quaternion before turning it into the rotation matrix.
-            float thetaOverTwo = omegaMagnitude * dT / 2.0f;
-            float sinThetaOverTwo = (float)Math.sin(thetaOverTwo);
-            float cosThetaOverTwo = (float)Math.cos(thetaOverTwo);
-            deltaRotationVector[0] = sinThetaOverTwo * axisX;
-            deltaRotationVector[1] = sinThetaOverTwo * axisY;
-            deltaRotationVector[2] = sinThetaOverTwo * axisZ;
-            deltaRotationVector[3] = cosThetaOverTwo;
-        }
-        timestamp = event.timestamp;
-        float[] deltaRotationMatrix = new float[9];
-        SensorManager.getRotationMatrixFromVector(deltaRotationMatrix, deltaRotationVector);
-        // User code should concatenate the delta rotation we computed with the current rotation
-        // in order to get the updated rotation.
-        currentRotationMatrix = matrixMultiplication(
-                currentRotationMatrix,
-                deltaRotationMatrix);
-
-        SensorManager.getOrientation(currentRotationMatrix,
-                gyroscopeOrientation);
-        //if(Math.abs(deltaRotationVector[1]) > 0.05 && Math.abs(deltaRotationVector[1]) < 0.2)
-        gyroView1.setText(Float.toString(deltaRotationMatrix[0]));
-        gyroView2.setText(Float.toString(deltaRotationMatrix[1]));
-        gyroView3.setText(Float.toString(deltaRotationMatrix[2]));
-*/
-    }
-
-    /*private float[] matrixMultiplication(float[] a, float[] b)
-    {
-        float[] result = new float[9];
-
-        result[0] = a[0] * b[0] + a[1] * b[3] + a[2] * b[6];
-        result[1] = a[0] * b[1] + a[1] * b[4] + a[2] * b[7];
-        result[2] = a[0] * b[2] + a[1] * b[5] + a[2] * b[8];
-
-        result[3] = a[3] * b[0] + a[4] * b[3] + a[5] * b[6];
-        result[4] = a[3] * b[1] + a[4] * b[4] + a[5] * b[7];
-        result[5] = a[3] * b[2] + a[4] * b[5] + a[5] * b[8];
-
-        result[6] = a[6] * b[0] + a[7] * b[3] + a[8] * b[6];
-        result[7] = a[6] * b[1] + a[7] * b[4] + a[8] * b[7];
-        result[8] = a[6] * b[2] + a[7] * b[5] + a[8] * b[8];
-
-        return result;
-    }*/
 
     public void endCrossingAlert(String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

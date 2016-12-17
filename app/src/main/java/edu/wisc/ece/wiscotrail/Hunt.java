@@ -12,11 +12,13 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -34,7 +36,7 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     private double hAngle, vAngle; //these are the camera view angles
 
     private int height, width = 0;
-    private int numBullets = 5;
+    private int numBullets = 0;
     //containers for bullets and bulletHole images
     private ImageView[] bullets;
     private ImageView[] bulletHoles;
@@ -42,10 +44,6 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     // Create a constant to convert nanoseconds to seconds.
     private static final float NS2S = 1.0f / 1000000000.0f;
     private float timestamp = 0;
-
-    private float xRand = 1000;
-    private float yRand = 300;
-    private float scale = 500;
 
     //this is the cow on the screen
     ImageView cow;
@@ -57,11 +55,21 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     RelativeLayout layout;
     ImageView bulletHole;  //used to draw bullet holes
     long lastShootTime = 0; //when the player last shot, used for timing
+    long lastHitTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hunt);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        //initialize number of bullets
+        if (UserVars.ammunition < 10){
+            numBullets = UserVars.ammunition;
+        }
+        else {
+            numBullets = 10;
+        }
 
         try {
             mCamera = Camera.open();//you can use open(int) to use different cameras
@@ -73,6 +81,17 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
             mCameraView = new CameraView(this, mCamera);//create a SurfaceView to show camera data
             FrameLayout camera_view = (FrameLayout) findViewById(R.id.camera_view);
             camera_view.addView(mCameraView);//add the SurfaceView to the layout
+           camera_view.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   if(numBullets > 0) {
+                       if(System.currentTimeMillis() - lastShootTime > 300) {
+                           lastShootTime = System.currentTimeMillis();
+                           shootGun();
+                       }
+                   }
+               }
+           });
         }
 
         //find camera lens angles if needed
@@ -87,7 +106,6 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
         layout = (RelativeLayout) findViewById(R.id.huntingLayout);
 
-        //TODO set random attributes
         //set "cow" randomly section
         Random rand = new Random();
         cow = (ImageView) findViewById(R.id.cow);
@@ -106,38 +124,35 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
         cow.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View view, MotionEvent event) {
+                //if there are any bullets to shoot
+                if (numBullets > 0) {
 
-                int pixel = 0;
-                int pixX = (int) event.getX();
-                int pixY = (int) event.getY();
-                //this part is sort of a stretch...try to find pixel on bitmap translated from real image
-                //update: it works
-                if (bitmap != null || pixX < 0 || pixY < 0 || pixX > cow.getWidth() || pixY > cow.getHeight()) {
-                    int projectedX = (int) ((double) pixX * ((double) bitmap.getWidth() / (double) cow.getWidth()));
-                    int projectedY = (int) ((double) pixY * ((double) bitmap.getHeight() / (double) cow.getHeight()));
-                    //crashes without checks for bounds
-                    if (projectedX < bitmap.getWidth() && projectedY < bitmap.getHeight() && projectedX > 0 && projectedY > 0) {
-                        pixel = bitmap.getPixel(projectedX, projectedY);
+                    int pixel = 0;
+                    int pixX = (int) event.getX();
+                    int pixY = (int) event.getY();
+                    //this part is sort of a stretch...try to find pixel on bitmap translated from real image
+                    //update: it works
+                    if (bitmap != null || pixX < 0 || pixY < 0 || pixX > cow.getWidth() || pixY > cow.getHeight()) {
+                        int scaleX = (int) ((double) pixX * ((double) bitmap.getWidth() / (double) cow.getWidth()));
+                        int scaleY = (int) ((double) pixY * ((double) bitmap.getHeight() / (double) cow.getHeight()));
+                        //crashes without checks for bounds
+                        if (scaleX < bitmap.getWidth() && scaleY < bitmap.getHeight() && scaleX > 0 && scaleY > 0) {
+                            pixel = bitmap.getPixel(scaleX, scaleY);
+                        }
                     }
-                }
 
-                //timing so that you don't accidentally shoot too fast
-                if ((event.getEventTime() - lastShootTime > 300) && Color.alpha(pixel) != 0) {
-                    if (numBullets > 0) {
-                        lastShootTime = event.getEventTime();
+                    //shootGun(); //simulate gun shooting
+
+                    //timing so that you don't accidentally shoot too fast
+                    //check that the alpha of the pixel isn't transparent, either
+                    if ((event.getEventTime() - lastHitTime > 300) && Color.alpha(pixel) != 0) {
+                        lastHitTime = event.getEventTime();
                         bulletHole = new ImageView(Hunt.this);
                         bulletHole.setImageResource(R.drawable.bullethole);
 
-                        layout.addView(bulletHole);
+                        shootGun();
 
-                        //play gunshot for successful shot (override current gunshot)
-                        if(mp.isPlaying()){
-                            mp.stop();
-                            mp.release();
-                        }
-                        mp = MediaPlayer.create(Hunt.this, R.raw.gunshot);
-                        mp.start();
-                        mp.start();
+                        layout.addView(bulletHole);
 
                         bulletHole.getLayoutParams().height = 50;
                         bulletHole.getLayoutParams().width = 50;
@@ -151,10 +166,6 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
                         //t.setText(String.valueOf(event.getRawX() + "/" ));
                         //////////////////////////////////////////////////////////////////////
 
-                        //expend one bullet and add bullet hole to array
-                        numBullets--;
-                        bullets[numBullets].setVisibility(View.INVISIBLE);
-                        //TODO store bullet holes with animal?
                         bulletHoles[numBullets] = bulletHole;
                         return true;
                     }
@@ -283,6 +294,22 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         //unused
+    }
+
+    public void shootGun(){
+
+        //play gunshot for successful shot (override current gunshot)
+        if(mp.isPlaying()){
+            mp.stop();
+            mp.release();
+        }
+        mp = MediaPlayer.create(Hunt.this, R.raw.gunshot);
+        mp.start();
+
+        //expend one bullet and add bullet hole to array
+        numBullets--;
+        UserVars.ammunition--;
+        bullets[numBullets].setVisibility(View.INVISIBLE);
     }
 
 }
