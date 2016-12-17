@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.wisc.ece.wiscotrail.Milwaukee">
+    tools:context="edu.wisc.ece.wiscotrail.Milwaukee"
+    android:background="@drawable/milwaukee">
 
     <Button
         android:text="Go to the Farm and Fleet"
@@ -37,5 +38,6 @@
         android:id="@+id/textView26"
         android:textSize="28sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@color/almost_white"/>
 </RelativeLayout>
