@@ -153,6 +153,7 @@ public class UserVars {
         mEditor.putInt("money", money);
         mEditor.putInt("date", date);
         mEditor.putInt("ammunition", ammunition);
+        mEditor.putBoolean("music_prefs", music_pref);
 
         mEditor.commit();
 
@@ -200,6 +201,7 @@ public class UserVars {
         money = dataStore.getInt("money", -1);
         date = dataStore.getInt("date", -1);
         ammunition = dataStore.getInt("ammunition", -1);
+        music_pref = dataStore.getBoolean("music_prefs", false);
 
         Toast.makeText(context, "Loaded previous game!",
                 Toast.LENGTH_SHORT).show();

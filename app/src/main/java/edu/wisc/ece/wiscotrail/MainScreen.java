@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 public class MainScreen extends AppCompatActivity {
 
     public static Boolean milestoneSet = false;
-    BackgroundSound mBackgroundSound = new BackgroundSound();
+    BackgroundSound mBackgroundSound;
     ImageView weatherImage;
 
 
@@ -26,7 +27,6 @@ public class MainScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
         weatherImage = (ImageView)findViewById(R.id.weatherImage);
-        mBackgroundSound.execute();
 
 
         TextView dateTV = (TextView)findViewById(R.id.date_field);
@@ -229,9 +229,23 @@ public class MainScreen extends AppCompatActivity {
             case R.id.quit:
                 finish();
                 System.exit(1);
+                break;
+            case R.id.music_toggle:
+                Log.e("Music_Toggle", "Music_Toggle");
+                UserVars.music_pref = !UserVars.music_pref;
+                if(!UserVars.music_pref){
+                    mBackgroundSound.cancel(true);
+                    Log.e("TurnOFF", "TurnOFF");
+                }
+                else{
+                    mBackgroundSound = new BackgroundSound();
+                    mBackgroundSound.execute();
+                }
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return false;
     }
 
     @Override
@@ -242,13 +256,21 @@ public class MainScreen extends AppCompatActivity {
 
 
     public class BackgroundSound extends AsyncTask<Void, Void, Void> {
+        MediaPlayer player = MediaPlayer.create(MainScreen.this, R.raw.ashokan);
 
         @Override
         protected Void doInBackground(Void... params) {
-            MediaPlayer player = MediaPlayer.create(MainScreen.this, R.raw.ashokan);
             player.setLooping(true); // Set looping
             player.setVolume(1.0f, 1.0f);
             player.start();
+
+            while(true){
+                if(isCancelled()){
+                    Log.e("Cancelled", "Cancelled");
+                    player.stop();
+                    break;
+                }
+            }
 
             return null;
         }
