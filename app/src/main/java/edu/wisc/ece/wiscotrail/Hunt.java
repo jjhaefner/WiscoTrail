@@ -1,5 +1,7 @@
 package edu.wisc.ece.wiscotrail;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Matrix;
@@ -13,6 +15,8 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -32,6 +36,7 @@ import static java.lang.Math.abs;
 public class Hunt extends AppCompatActivity implements SensorEventListener {
     private Camera mCamera = null;
     private CameraView mCameraView = null;
+    final int MY_PERMISSIONS_REQUEST_USE_CAMERA=101; //camera request constant
 
     private float epsilon = .2f; //changes sensitivity to "jostling"
     private double hAngle, vAngle; //these are the camera view angles
@@ -64,6 +69,19 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+       if(ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED){
+
+           ActivityCompat.requestPermissions(this,
+                   new String[]{Manifest.permission.CAMERA},
+                   MY_PERMISSIONS_REQUEST_USE_CAMERA);
+           Toast toast = Toast.makeText(Hunt.this, "Allow camera permissions to hunt", Toast.LENGTH_LONG);
+           toast.show();
+           finish();
+       }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hunt);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -288,7 +306,6 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
 
         // Create a new bitmap and convert it to a format understood by the ImageView
         Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
-        BitmapDrawable result = new BitmapDrawable(scaledBitmap);
         width = scaledBitmap.getWidth();
         height = scaledBitmap.getHeight();
 
@@ -343,6 +360,11 @@ public class Hunt extends AppCompatActivity implements SensorEventListener {
             bulletHoles = new ImageView[numBullets];
            meatGained += 40 + rand.nextInt(60);
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
 
     }
 
