@@ -48,6 +48,10 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         scaleImage(wagon_img, 150);
         tStart = System.currentTimeMillis();
 
+        //TODO this doesn't work
+//        PlayGifView pGif = (PlayGifView) findViewById(R.id.waveGif);
+//        pGif.setImageResource(R.drawable.waves);
+
         oriView1 = (TextView)findViewById(R.id.orientationVal1);
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(this,
