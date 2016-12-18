@@ -60,8 +60,18 @@ public class MainScreen extends AppCompatActivity {
         super.onResume();
 
         if(UserVars.music_pref) {
-            mBackgroundSound = new BackgroundSound();
-            mBackgroundSound.execute();
+            Log.e("resume", "resume");
+            if(mBackgroundSound == null){
+                mBackgroundSound = new BackgroundSound();
+                mBackgroundSound.execute();
+            }
+            else{
+                if(mBackgroundSound.isCancelled()){
+                    mBackgroundSound = new BackgroundSound();
+                    mBackgroundSound.execute();
+                }
+            }
+
         }
 
         switch(UserVars.weather){
@@ -249,30 +259,36 @@ public class MainScreen extends AppCompatActivity {
     }
 
     @Override
-    public void onStop(){
-        super.onStop();
+    public void onDestroy(){
+        Log.e("WE'RE Destroy","WE'RE Destroy");
+        super.onDestroy();
         mBackgroundSound.cancel(true);
     }
 
 
     public class BackgroundSound extends AsyncTask<Void, Void, Void> {
-        MediaPlayer player = MediaPlayer.create(MainScreen.this, R.raw.ashokan);
+
 
         @Override
         protected Void doInBackground(Void... params) {
+            MediaPlayer player = MediaPlayer.create(MainScreen.this, R.raw.ashokan);
+            Log.e("Casdfasdf", "Caasdfasdfasdfled");
             player.setLooping(true); // Set looping
             player.setVolume(1.0f, 1.0f);
             player.start();
 
             while(true){
-                if(isCancelled()){
+
+                if(this.isCancelled()){
                     Log.e("Cancelled", "Cancelled");
                     player.stop();
-                    break;
+                    player.release();
+                    return null;
+
                 }
             }
 
-            return null;
+
         }
 
     }
