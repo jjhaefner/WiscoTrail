@@ -17,7 +17,7 @@ public class GreenBay extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Intent intent = new Intent(this, EndGame.class);
+        Intent intent = new Intent(this, EndPoints.class);
         finish();
         startActivity(intent);
         return super.onTouchEvent(event);

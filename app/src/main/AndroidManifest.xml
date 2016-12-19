@@ -9,10 +9,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/cow"
         android:label="WiscoTrail"
-        android:supportsRtl="true"
         android:largeHeap="true"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashActivity"
@@ -121,7 +121,8 @@
             android:name=".RiverCrossing"
             android:screenOrientation="portrait" />
         <activity android:name=".DevilsLakeView1" />
-        <activity android:name=".DevilsLakeView2"></activity>
+        <activity android:name=".DevilsLakeView2" />
+        <activity android:name=".EndPoints"></activity>
     </application>
 
 </manifest>

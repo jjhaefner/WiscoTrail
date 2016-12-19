@@ -15,15 +15,11 @@ public class EndGame extends AppCompatActivity {
     }
 
     public void quit(View view){
-        //end game, quit all activities
-        System.exit(1);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
+        //go back to main screen
         Intent intent = new Intent(this, MainActivity.class);
         finish();
         startActivity(intent);
-        return super.onTouchEvent(event);
     }
+
+
 }

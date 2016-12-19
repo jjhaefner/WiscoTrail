@@ -18,6 +18,7 @@ import android.widget.TextView;
 public class MainScreen extends AppCompatActivity {
 
     public static Boolean milestoneSet = false;
+    public static Boolean yaDied = false;
     BackgroundSound mBackgroundSound;
     ImageView weatherImage;
 
@@ -58,6 +59,14 @@ public class MainScreen extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        if(yaDied){
+            yaDied = false;
+            UserVars.resetVars();
+            Intent intent = new Intent(this, EndGame.class);
+            finish();
+            startActivity(intent);
+        }
 
         if(UserVars.music_pref) {
             Log.e("resume", "resume");

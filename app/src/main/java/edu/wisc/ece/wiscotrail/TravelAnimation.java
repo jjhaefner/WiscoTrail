@@ -30,6 +30,7 @@ public class TravelAnimation extends AppCompatActivity {
         calculateAlcohol();
         determineWeather(myRandom);
         determineHealth(myRandom, TravelAnimation.this);
+
         calculateMorale();
         //increase the date
         UserVars.date += 1;

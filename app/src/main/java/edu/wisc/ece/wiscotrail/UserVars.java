@@ -207,4 +207,34 @@ public class UserVars {
                 Toast.LENGTH_SHORT).show();
         return true;
     }
+
+    public static void resetVars(){
+        partyLeader = "Bucky";
+        partyMember1 = "Becky";
+        partyMember2 = "Lori";
+        partyMember3 = "Xinyu";
+        partyMember4 = "Morrow";
+
+        // health options: healthy, broken arm, broken leg,
+        // alcohol poisoning, cholera, dysentery, measles
+        // typhoid, tired, dead
+        partyLeader_health = "healthy";
+        partyMember1_health = "healthy";
+        partyMember2_health = "healthy";
+        partyMember3_health = "healthy";
+        partyMember4_health = "healthy";
+
+        mileage = 0;
+        rations = "generous"; //2 = generous, 1 = limited, 0 = barebones
+        alcohol_gallons = 0;
+        food_lbs = 0;
+        num_oxen = 0;
+        num_clothes = 0;
+        weather = "fair"; //"fair", "cloudy", "raining", "snowing", "blizzard", "frigid", "storming", "apocalyptic"
+        morale = "high";
+        pace = "steady"; //"steady" or "crawling" or "my grandma could walk faster"
+        money = 0;
+        date = 1; //out of days in year (365) starting in 1880
+        ammunition = 0;
+    }
 }

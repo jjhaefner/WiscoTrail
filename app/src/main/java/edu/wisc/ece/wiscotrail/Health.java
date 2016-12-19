@@ -401,8 +401,10 @@ public class Health {
             else if(currHealth.equals("alcohol poisoning")){
                 if(currRand < 2){
                     currHealths.set(i, "dead");
-                    if(i == 0)
+                    if(i == 0) {
                         alertMessage = "You have died from alcohol poisoning";
+                        MainScreen.yaDied = true;
+                    }
                     else
                         alertMessage = partyNames.get(i) + " has died from alcohol poisoning";
                     displayHealthAlert(alertMessage, act);
@@ -430,8 +432,10 @@ public class Health {
             else if(currHealth.equals("cholera")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    if(i == 0)
+                    if(i == 0) {
                         alertMessage = "You have died of cholera";
+                        MainScreen.yaDied = true;
+                    }
                     else
                         alertMessage = partyNames.get(i) + " has died of cholera";
                     displayHealthAlert(alertMessage, act);
@@ -458,8 +462,10 @@ public class Health {
             else if(currHealth.equals("dysentery")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    if(i == 0)
+                    if(i == 0) {
                         alertMessage = "You have died of dysentery";
+                        MainScreen.yaDied = true;
+                    }
                     else
                         alertMessage = partyNames.get(i) + " has died of dysentery";
                     displayHealthAlert(alertMessage, act);
@@ -486,8 +492,10 @@ public class Health {
             else if(currHealth.equals("measles")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    if(i == 0)
+                    if(i == 0) {
                         alertMessage = "You have died of measles";
+                        MainScreen.yaDied = true;
+                    }
                     else
                         alertMessage = partyNames.get(i) + " has died of measles";
                     displayHealthAlert(alertMessage, act);
@@ -513,8 +521,10 @@ public class Health {
             else if(currHealth.equals("typhoid")){
                 if(currRand < 8){
                     currHealths.set(i, "dead");
-                    if(i == 0)
+                    if(i == 0) {
                         alertMessage = "You have died of typhoid";
+                        MainScreen.yaDied = true;
+                    }
                     else
                         alertMessage = partyNames.get(i) + " has died of typhoid";
                     displayHealthAlert(alertMessage, act);
@@ -594,8 +604,10 @@ public class Health {
                     }
                     else{
                         currHealths.set(i, "dead");
-                        if(i == 0)
+                        if(i == 0) {
                             alertMessage = "You have died of infection";
+                            MainScreen.yaDied = true;
+                        }
                         else
                             alertMessage = partyNames.get(i) + " has died of infection";
                         displayHealthAlert(alertMessage, act);
@@ -655,8 +667,10 @@ public class Health {
                     }
                     else{
                         currHealths.set(i, "dead");
-                        if(i == 0)
+                        if(i == 0) {
                             alertMessage = "You have died of infection";
+                            MainScreen.yaDied = true;
+                        }
                         else
                             alertMessage = partyNames.get(i) + " has died of infection";
                         displayHealthAlert(alertMessage, act);
@@ -716,8 +730,10 @@ public class Health {
                     }
                     else{
                         currHealths.set(i, "dead");
-                        if(i == 0)
+                        if(i == 0) {
                             alertMessage = "You have died of infection";
+                            MainScreen.yaDied = true;
+                        }
                         else
                             alertMessage = partyNames.get(i) + " has died of infection";
                         displayHealthAlert(alertMessage, act);
@@ -785,8 +801,10 @@ public class Health {
                     }
                     else{
                         currHealths.set(i, "dead");
-                        if(i == 0)
+                        if(i == 0) {
                             alertMessage = "You have died of infection";
+                            MainScreen.yaDied = true;
+                        }
                         else
                             alertMessage = partyNames.get(i) + " has died of infection";
                         displayHealthAlert(alertMessage, act);
@@ -846,8 +864,10 @@ public class Health {
                     }
                     else{
                         currHealths.set(i, "dead");
-                        if(i == 0)
+                        if(i == 0) {
                             alertMessage = "You have died of infection";
+                            MainScreen.yaDied = true;
+                        }
                         else
                             alertMessage = partyNames.get(i) + " has died of infection";
                         displayHealthAlert(alertMessage, act);
@@ -907,8 +927,10 @@ public class Health {
                     }
                     else{
                         currHealths.set(i, "dead");
-                        if(i == 0)
+                        if(i == 0) {
                             alertMessage = "You have died of infection";
+                            MainScreen.yaDied = true;
+                        }
                         else
                             alertMessage = partyNames.get(i) + " has died of infection";
                         displayHealthAlert(alertMessage, act);

@@ -38,7 +38,8 @@
             <TextView
                 android:text="Can you make it to Green Bay to see the Packers game?\n\n
 Travel 500 miles through Wisconsin's dairyland and see its most notable landmarks from a covered wagon! Battle fierce blizzards, humid summers, and drunk drivers to keep your party happy and healthy on what must be the longest road trip to a Packers Game ever.\n\n
-To play, either select Load Game from the Main Menu if you have a saved game, or select New Game to choose your profession, create a traveling party, buy supplies, and start your adventure. Note that you aren't able to earn money on the trail, so be sure not to spend all of it!
+To play, either select Load Game from the Main Menu if you have a saved game, or select New Game to choose your profession, create a traveling party, buy supplies, and start your adventure. Note that you aren't able to earn money on the trail, so be sure not to spend all of it!\n
+*Note that you must have at least 1 set of oxen to progress through the trail!
 "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
