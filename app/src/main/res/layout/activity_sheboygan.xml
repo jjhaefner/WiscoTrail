@@ -39,5 +39,6 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/textView27"
         android:textSize="28sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textAlignment="center" />
 </RelativeLayout>

@@ -16,6 +16,7 @@ public class EndPoints extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_points);
         totalPoints();
+        pointText = (TextView)findViewById(R.id.PointsTextView);
         pointText.setText("Your points total is...\n" +
                 "\n" + points + " points!");
         UserVars.resetVars();

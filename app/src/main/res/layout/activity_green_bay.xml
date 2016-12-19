@@ -11,33 +11,23 @@
     tools:context="edu.wisc.ece.wiscotrail.GreenBay"
     android:background="@drawable/lambeau">
 
-    <Button
-        android:text="Go to the Farm and Fleet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="141dp"
-        android:id="@+id/button22"
-        android:onClick="goFarmNFleet" />
-
-    <Button
-        android:text="Continue On!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:id="@+id/button24"
-        android:onClick="backToDash"
-        android:layout_alignTop="@+id/button22"
-        android:layout_centerHorizontal="true" />
-
     <TextView
-        android:text="You've reached Green Bay!"
+        android:text="You've reached Green Bay!\n\nGo Pack Go!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView32"
         android:textSize="28sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textAlignment="center" />
+
+    <Button
+        android:text="See how you did"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button24"
+        android:onClick="seeHowYouDid"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

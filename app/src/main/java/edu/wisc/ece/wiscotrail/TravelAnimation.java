@@ -89,7 +89,7 @@ public class TravelAnimation extends AppCompatActivity {
         }
         else if(randNum < (prob_wagon_breakdown)){
             progress_halted = true;
-            this.eventAlert("Wagon breaks down");
+            this.eventAlert("Wagon breaks down.\nMust wait one day to fix it!");
         }
         else if(randNum < prob_thief){
             double randNum1 = rand.nextDouble() * 100; //make into percent

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 
 public class GreenBay extends AppCompatActivity {
 
@@ -15,11 +16,10 @@ public class GreenBay extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public void seeHowYouDid(View view){
         Intent intent = new Intent(this, EndPoints.class);
         finish();
         startActivity(intent);
-        return super.onTouchEvent(event);
     }
+
 }
