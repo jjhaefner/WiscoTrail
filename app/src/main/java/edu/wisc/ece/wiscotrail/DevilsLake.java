@@ -21,12 +21,9 @@ public class DevilsLake extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public void goAway(View view){
         Intent intent = new Intent(this, MainScreen.class);
         finish();
         startActivity(intent);
-        return super.onTouchEvent(event);
     }
 }

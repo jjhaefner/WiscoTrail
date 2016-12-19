@@ -32,12 +32,13 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="You've reached Madison!"
+        android:text="You've reached\nMadison!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView17"
         android:textSize="28sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/almost_white"/>
+        android:textColor="@color/black"
+        android:textAlignment="center" />
 </RelativeLayout>

@@ -969,21 +969,5 @@ public class Health {
         final AlertDialog dialog = builder.create();
         dialog.show();
 
-        /*mRunnable = new Runnable() {
-            @Override
-            public void run() {
-                if(dialog.isShowing())
-                    dialog.dismiss();
-            }
-        };
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                mHandler.removeCallbacks(mRunnable);
-            }
-        });
-
-        mHandler.postDelayed(mRunnable, 5000);
-        */
     }
 }

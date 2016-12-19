@@ -32,12 +32,13 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="You've reached Eau Claire!"
+        android:text="You've reached\nEau Claire!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView18"
         android:textSize="28sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/almost_white"/>
+        android:textAlignment="center"
+        android:textColor="@color/black" />
 </RelativeLayout>

@@ -39,5 +39,5 @@
         android:textSize="28sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/almost_white"/>
+        android:textColor="@color/black" />
 </RelativeLayout>

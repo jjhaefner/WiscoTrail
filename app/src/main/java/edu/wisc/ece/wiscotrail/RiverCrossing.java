@@ -42,7 +42,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         wagon_img = (ImageView)findViewById(R.id.wagon_img);
         rand = new Random();
         wagon_img.setScaleType(ImageView.ScaleType.MATRIX);
-        scaleImage(wagon_img, 250);
+        scaleImage(wagon_img, 450);
         tStart = System.currentTimeMillis();
 
         //TODO this doesn't work

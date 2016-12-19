@@ -26,6 +26,7 @@ public class TravelAnimation extends AppCompatActivity {
         changeMileage();
 
 
+
         calculateFood();
         calculateAlcohol();
         determineWeather(myRandom);

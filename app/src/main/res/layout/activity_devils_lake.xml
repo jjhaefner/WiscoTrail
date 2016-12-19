@@ -20,6 +20,7 @@
         android:textSize="28sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
         />
 
     <Button
@@ -29,7 +30,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
-        android:id="@+id/button32" />
+        android:id="@+id/button32"
+        android:onClick="goAway"/>
 
     <Button
         android:text="Check out Devil's Lake"
@@ -38,6 +40,7 @@
         android:layout_above="@+id/button32"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
-        android:id="@+id/button33" />
+        android:id="@+id/button33"
+        android:onClick="goTo1"/>
 
 </RelativeLayout>

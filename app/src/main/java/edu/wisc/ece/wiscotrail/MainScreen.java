@@ -66,6 +66,7 @@ public class MainScreen extends AppCompatActivity {
             Intent intent = new Intent(this, EndGame.class);
             finish();
             startActivity(intent);
+            return;
         }
 
         if(UserVars.music_pref) {

@@ -15,7 +15,7 @@ public class EndGame extends AppCompatActivity {
     }
 
     public void quit(View view){
-        //go back to main screen
+        //go back to start screen
         Intent intent = new Intent(this, MainActivity.class);
         finish();
         startActivity(intent);
