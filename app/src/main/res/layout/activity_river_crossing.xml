@@ -9,31 +9,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/river"
+    android:background="@drawable/waves"
     tools:context="edu.wisc.ece.wiscotrail.RiverCrossing">
 
-
-    <TextView
-        android:text="x:"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView54"
-        android:textSize="28sp"
-        android:layout_alignBaseline="@+id/orientationVal1"
-        android:layout_alignBottom="@+id/orientationVal1" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/orientationVal1"
-        android:textSize="28sp"
-        android:layout_marginTop="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView54"
-        android:layout_toEndOf="@+id/textView54"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp" />
 
     <ImageView
         app:srcCompat="@drawable/wagon"
@@ -43,5 +21,16 @@
         android:layout_marginBottom="33dp"
         android:layout_width="150dp"
         android:layout_height="150dp" />
+
+    <TextView
+        android:text="Tilt to avoid tipping!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/orientationVal1"
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp" />
 
 </RelativeLayout>

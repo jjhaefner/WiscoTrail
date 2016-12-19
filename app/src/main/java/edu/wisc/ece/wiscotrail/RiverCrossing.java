@@ -30,7 +30,6 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
     Matrix matrix = new Matrix();
     double total_rot = 0;
     double artificial_center = 0;
-    TextView oriView1;
     Random rand;
     ImageView wagon_img;
     long tStart;
@@ -52,7 +51,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 //        PlayGifView pGif = (PlayGifView) findViewById(R.id.waveGif);
 //        pGif.setImageResource(R.drawable.waves);
 
-        oriView1 = (TextView)findViewById(R.id.orientationVal1);
+
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
@@ -158,7 +157,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
                 }
             } else
                 total_rot += rand_skew + (x_rot / 1.5);
-            oriView1.setText(Float.toString(elapsed_secs));
+
             //if not maxed out, rotate more
             if ((total_rot < 75) && (total_rot > -75))
                 matrix.preRotate((float) ((x_rot / 1.5) + rand_skew), pivotX, pivotY);
