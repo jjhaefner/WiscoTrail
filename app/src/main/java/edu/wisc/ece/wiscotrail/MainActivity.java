@@ -52,12 +52,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadGame(View view){
-        if(UserVars.loadData(this)){
+       if(UserVars.loadData(this)){
             Intent intent = new Intent(this, MainScreen.class);
             startActivity(intent);
             finish();
         }
-
+        //Intent intent = new Intent(this, RiverCrossing.class);
+        //startActivity(intent);
     }
 
     public void learnAboutTrail(View view){

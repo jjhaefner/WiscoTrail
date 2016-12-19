@@ -14,11 +14,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.lang.Math;
 import java.util.Random;
@@ -44,7 +42,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         wagon_img = (ImageView)findViewById(R.id.wagon_img);
         rand = new Random();
         wagon_img.setScaleType(ImageView.ScaleType.MATRIX);
-        scaleImage(wagon_img, 150);
+        scaleImage(wagon_img, 250);
         tStart = System.currentTimeMillis();
 
         //TODO this doesn't work
@@ -55,7 +53,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
-                SensorManager.SENSOR_DELAY_NORMAL);
+                SensorManager.SENSOR_DELAY_UI);
 
     }
 
@@ -117,7 +115,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 
         elapsed_secs = System.currentTimeMillis() - tStart;
         //grace period of 3 seconds
-        if(elapsed_secs < 2000){
+        if(elapsed_secs < 1000){
             return;
         }
         //after 30 seconds you cross the river
@@ -127,12 +125,12 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
                 crossedSuccessfully();
             }
         }
+        else {
 
-            double rand_num = (irand.nextDouble()*2) -1; //rand double btwn 0.0 and 1.0
-            if(rand_num < 0){
-                rand_num = -1*(Math.sqrt(Math.abs(rand_num)));
-            }
-            else{
+            double rand_num = (irand.nextDouble() * 2) - 1; //rand double btwn 0.0 and 1.0
+            if (rand_num < 0) {
+                rand_num = -1 * (Math.sqrt(Math.abs(rand_num)));
+            } else {
                 rand_num = Math.sqrt(rand_num);
             }
             double rand_skew = rand_num * 8; //now you have a random number btwn -8 and 8, more heavily weighted towards the edges
@@ -163,6 +161,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
                 matrix.preRotate((float) ((x_rot / 1.5) + rand_skew), pivotX, pivotY);
 
             wagon_img.setImageMatrix(matrix);
+        }
         }
 
 

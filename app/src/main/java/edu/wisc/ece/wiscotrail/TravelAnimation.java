@@ -4,13 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
+
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -18,7 +15,6 @@ import java.util.Random;
 public class TravelAnimation extends AppCompatActivity {
     static boolean progress_halted = false;
     static boolean stranger_danger = false;
-    static boolean animationStarted = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
