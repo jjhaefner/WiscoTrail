@@ -42,4 +42,8 @@ public class StartTrail extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+    public void compareProfs(View view){
+        Intent intent = new Intent(this, CompareProfessions.class);
+        startActivity(intent);
+    }
 }

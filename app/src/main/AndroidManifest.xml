@@ -34,6 +34,9 @@
             android:name=".TrailInfo"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".CompareProfessions"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ToggleSound"
             android:screenOrientation="portrait" />
         <activity

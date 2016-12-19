@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_trail_info"
+    android:id="@+id/activity_compare_professions"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/black"
-    tools:context="edu.wisc.ece.wiscotrail.TrailInfo">
+    tools:context="edu.wisc.ece.wiscotrail.CompareProfessions">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:weightSum="1">
 
             <TextView
-                android:text="How to Play"
+                android:text="Professions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -36,9 +36,11 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:text="Can you make it to Green Bay to see the Packers game?\n\n
-Travel 500 miles through Wisconsin's dairyland and see its most notable landmarks from a covered wagon! Battle fierce blizzards, humid summers, and drunk drivers to keep your party happy and healthy on what must be the longest road trip to a Packers Game ever.\n\n
-To play, either select Load Game from the Main Menu if you have a saved game, or select New Game to choose your profession, create a traveling party, buy supplies, and start your adventure. Note that you aren't able to earn money on the trail, so be sure not to spend all of it!
+                android:text="The Wisconsin Trail is more difficult for some than for others!\n\nEach profession gives you a different amount of starting resources. Here are your options:\n\n
+Banker          - $2000\n
+Bartender       - $1200 + 10 gallons alcohol\n
+Dairy Farmer    - $700 + 2 oxen + 500 lbs food\n
+Tunnel Operator - $600\n
 "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,11 +54,11 @@ To play, either select Load Game from the Main Menu if you have a saved game, or
                 android:layout_alignParentStart="true" />
 
             <Button
-                android:text="Back to Start Screen!"
+                android:text="Back to selection!"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button7"
-                android:onClick="backToStart" />
+                android:onClick="backToChoose" />
 
         </LinearLayout>
     </ScrollView>
