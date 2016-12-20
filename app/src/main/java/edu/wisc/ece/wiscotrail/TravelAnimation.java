@@ -20,18 +20,21 @@ public class TravelAnimation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_animation);
 
+        //create new random to pass to event generator methods
         Random myRandom = new Random();
-        //reset the milestone marker once mileage has been increased
+        //2.2 percent chance that an event will happen
         determineRandomEvent(myRandom);
+        //increment the mileage
         changeMileage();
-
-
-
+        //each day, use up some food based on rations
         calculateFood();
+        //use up alcohol if encountering bad times
         calculateAlcohol();
+        //randomly choose weather based on date
         determineWeather(myRandom);
-        determineHealth(myRandom, TravelAnimation.this);
-
+        //randomly determine health for next day based on current health
+        determineHealth(myRandom, TravelAnimation.this); //needs activity to send to Health class
+        //based on the day's events, calculate the group's morale
         calculateMorale();
         //increase the date
         UserVars.date += 1;
@@ -51,9 +54,9 @@ public class TravelAnimation extends AppCompatActivity {
         double randNum = rand.nextDouble() * 100; //make into percent
         double prob_drunk_stranger = 0.2;
         double prob_wagon_breakdown = 1; //includes prob_drunk_stranger
-        double prob_thief = 1.3;
-        double prob_cows_block_way = 1.8;
-        double prob_oxen_dies = 2.2;
+        double prob_thief = 1.3; //includes probability of events defined above
+        double prob_cows_block_way = 1.8; //includes probability of events defined above
+        double prob_oxen_dies = 2.2; //includes probability of events defined above
         if(randNum < prob_drunk_stranger){
             //TODO: sacrifice alcohol and food
             this.eventAlert("A drunk stranger has approached your wagon.");
@@ -440,21 +443,31 @@ public class TravelAnimation extends AppCompatActivity {
 
     }
 
+
+    //increment mileage based on variety of user variables
     public static void changeMileage() {
+        //reset the milestone marker once mileage has been increased
         MainScreen.milestoneSet = false;
+        //cannot travel forward if you have no oxen
         if(UserVars.num_oxen == 0)
             progress_halted = true;
+
+        //if progress is halted, do not increment mileage this round, just return
         if(progress_halted){
             progress_halted = false;
             return;
         }
+
+        //if only one oxen, pace is slow
         if(UserVars.num_oxen == 1)
             UserVars.pace = "my grandma could walk faster";
 
         double pace_multiplier = 1;
+        //only go 6 miles
         if(UserVars.pace.equalsIgnoreCase("crawling")){
             pace_multiplier = 0.6;
         }
+        //only go 3 miles
         else if(UserVars.pace.equalsIgnoreCase("my grandma could walk faster")){
             pace_multiplier = 0.3;
         }
@@ -507,6 +520,7 @@ public class TravelAnimation extends AppCompatActivity {
         }
     }
 
+    //Produce an AlertDialogue message to tell the user something happened
     public void eventAlert(String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message)
@@ -520,6 +534,7 @@ public class TravelAnimation extends AppCompatActivity {
 
     }
 
+    //Touch screen to continue
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         //Intent intent = new Intent(this, MainScreen.class);

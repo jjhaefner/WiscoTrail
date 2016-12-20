@@ -15,10 +15,14 @@ public class EndPoints extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_points);
+
+        //call function to add up poionts based on user variables
         totalPoints();
         pointText = (TextView)findViewById(R.id.PointsTextView);
         pointText.setText("Your points total is...\n" +
                 "\n" + points + " points!");
+
+        //for the next game, make sure variables are reset to defaults
         UserVars.resetVars();
     }
 

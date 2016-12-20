@@ -27,9 +27,9 @@ public class MainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
+
+        //get views for the layout - these will be modified
         weatherImage = (ImageView)findViewById(R.id.weatherImage);
-
-
         TextView dateTV = (TextView)findViewById(R.id.date_field);
         TextView mileageTV = (TextView)findViewById(R.id.mileage_field);
         TextView weatherTV = (TextView)findViewById(R.id.weather_field);
@@ -39,7 +39,7 @@ public class MainScreen extends AppCompatActivity {
         TextView moneyTV = (TextView)findViewById(R.id.money_field);
 
 
-
+        //set the date
         dateTV.setText(UserVars.dateIntToString(UserVars.date));
         //Set text must take String as input
         mileageTV.setText(Integer.toString(UserVars.mileage));
@@ -60,9 +60,11 @@ public class MainScreen extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        //if the party leader has died, this boolean is set in the health class
+        //we want to end the game if the party leader has died
         if(yaDied){
             yaDied = false;
-            UserVars.resetVars();
+            UserVars.resetVars(); //reset vars to default for next game
             Intent intent = new Intent(this, EndGame.class);
             finish();
             startActivity(intent);
@@ -84,6 +86,7 @@ public class MainScreen extends AppCompatActivity {
 
         }
 
+        //based on the weather variable, modify the weather image
         switch(UserVars.weather){
             case "fair":{
                 if(UserVars.date < 60 || UserVars.date >= 334)
@@ -122,9 +125,9 @@ public class MainScreen extends AppCompatActivity {
             }
         }
 
+        //if we have reached a milestone but the milestoneSet boolean has yet to be set
+        //determine which milestone activity to go to!
         if(!milestoneSet) {
-
-
 
             if(UserVars.mileage == UserVars.MILES_MINNEAPOLIS) {
                 Intent intent = new Intent(this, Minneapolis.class);
@@ -177,6 +180,7 @@ public class MainScreen extends AppCompatActivity {
 
         } //end if stmt for milestone-already-set
 
+
         TextView dateTV = (TextView)findViewById(R.id.date_field);
         TextView mileageTV = (TextView)findViewById(R.id.mileage_field);
         TextView weatherTV = (TextView)findViewById(R.id.weather_field);
@@ -185,7 +189,7 @@ public class MainScreen extends AppCompatActivity {
         TextView moraleTV = (TextView)findViewById(R.id.morale_field);
         TextView moneyTV = (TextView)findViewById(R.id.money_field);
 
-
+        //set these based on the current date
         dateTV.setText(UserVars.dateIntToString(UserVars.date));
         //Set text must take String as input
         mileageTV.setText(Integer.toString(UserVars.mileage));
@@ -203,36 +207,44 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
+    //Start travel animation class if this button is pressed
     public void continueOn(View view){
         Intent intent = new Intent(this, TravelAnimation.class);
         startActivity(intent);
     }
 
+    //start hunting activity if this button is pressed
     public void goHunting(View view){
         Intent intent = new Intent(this, Hunt.class);
         startActivity(intent);
     }
 
+    //start the travel settings activity if this button is pressed
     public void travelSettings(View view){
         Intent intent = new Intent(this, TravelSettings.class);
         startActivity(intent);
     }
 
+    //start the trading activity if this button is pressed
     public void tryTrading(View view){
         Intent intent = new Intent(this, Trade.class);
         startActivity(intent);
     }
 
+    //start the viewSupplies activity if button pressed
     public void viewSupplies(View view){
         Intent intent = new Intent(this, ViewSupplies.class);
         startActivity(intent);
     }
 
+    //start the partyhealth activity if button pressed
     public void viewPartyHealth(View view){
         Intent intent = new Intent(this, PartyHealth.class);
         startActivity(intent);
     }
 
+    //enable the app bar options menu for this activity
+    //allows user to toggle music, save game, or exit to home screen
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -243,13 +255,16 @@ public class MainScreen extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+            //Save game option
             case R.id.save_game:
-                UserVars.saveData(this);
+                UserVars.saveData(this); //goes to UserVars class and saves data to SharedPreferences
                 return true;
+            //Quit game option
             case R.id.quit:
                 finish();
                 System.exit(1);
                 break;
+            //Music toggle option
             case R.id.music_toggle:
                 Log.e("Music_Toggle", "Music_Toggle");
                 UserVars.music_pref = !UserVars.music_pref;

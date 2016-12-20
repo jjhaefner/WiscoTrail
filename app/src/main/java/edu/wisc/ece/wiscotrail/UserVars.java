@@ -56,8 +56,11 @@ public class UserVars {
 
     public static boolean music_pref = true; //true = on;
 
+    //convert our integer date into something meaningful to the user
     public static String dateIntToString(int date){
 
+        //date of 1 is the starting point, signifies Jan 1 1880.
+        //date of 365 would be Dec. 31 1880, date of 366 would be Jan 1 1881, etc.
         String return_date;
         String month = "January";
         int day = 1;

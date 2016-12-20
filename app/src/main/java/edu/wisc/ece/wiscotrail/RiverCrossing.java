@@ -25,7 +25,7 @@ import android.graphics.Matrix;
 public class RiverCrossing extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager mSensorManager;
-    Matrix matrix = new Matrix();
+    Matrix matrix = new Matrix(); //used for the image rotation
     double total_rot = 0;
     double artificial_center = 0;
     Random rand;
@@ -39,17 +39,16 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_river_crossing);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        //this is the Image used for the rotation in the activity
         wagon_img = (ImageView)findViewById(R.id.wagon_img);
         rand = new Random();
+        //using Matrix scale type to scale the image
         wagon_img.setScaleType(ImageView.ScaleType.MATRIX);
-        scaleImage(wagon_img, 450);
-        tStart = System.currentTimeMillis();
+        scaleImage(wagon_img, 450); //scale image to 450dp - this is not consistent btwn phones
+        tStart = System.currentTimeMillis();// mark the beginning time of the activity
 
-        //TODO this doesn't work
-//        PlayGifView pGif = (PlayGifView) findViewById(R.id.waveGif);
-//        pGif.setImageResource(R.drawable.waves);
-
-
+        //sensor will keep track of the phone orientation
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensorManager.registerListener(this,
                 mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
@@ -57,6 +56,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 
     }
 
+    //When the orientation of the phone changes......
     public void onSensorChanged(SensorEvent event) {
 
         if(event.sensor.getType() == Sensor.TYPE_ORIENTATION){
@@ -107,40 +107,44 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
 
     }
 
+    //function needed as a formality for the sensor to work
     public void onAccuracyChanged(Sensor sensor, int i){
 
     }
 
+    //this is where math happens
     public void doOrientationThings(SensorEvent event, Random irand){
 
         elapsed_secs = System.currentTimeMillis() - tStart;
-        //grace period of 3 seconds
+        //grace period of 1 seconds (1000 milliseconds)
         if(elapsed_secs < 1000){
             return;
         }
-        //after 30 seconds you cross the river
+        //after 30 seconds (30000 milliseconds) you have cross the river successfully
         if(elapsed_secs > 30000) {
             if(!lockHeld) {
                 lockHeld = true;
                 crossedSuccessfully();
             }
         }
+        //this else block is only supposed to happen before the 30 seconds mark
         else {
 
             double rand_num = (irand.nextDouble() * 2) - 1; //rand double btwn 0.0 and 1.0
             if (rand_num < 0) {
-                rand_num = -1 * (Math.sqrt(Math.abs(rand_num)));
+                rand_num = -1 * (Math.sqrt(Math.abs(rand_num))); //we want to weight the number towards -1
             } else {
-                rand_num = Math.sqrt(rand_num);
+                rand_num = Math.sqrt(rand_num); //we want to weight the number towards 1
             }
             double rand_skew = rand_num * 8; //now you have a random number btwn -8 and 8, more heavily weighted towards the edges
             //double rand_skew = (rand_num * 16) - 8; //get it to be a double between -2.000 and 2.000
             artificial_center += rand_skew;
             float x_rot = (-1) * event.values[2];
 
-            float pivotX = (wagon_img.getWidth() / 2);
-            float pivotY = (wagon_img.getHeight() / 2);
+            float pivotX = (wagon_img.getWidth() / 2); //center of wagon image is where we want to pivot
+            float pivotY = (wagon_img.getHeight() / 2); //center of wagon image
 
+            //check the user's orientation and determine if they've sunk
             if (total_rot + rand_skew + (x_rot / 1.5) > 75) {
                 total_rot = 75;
                 if (!lockHeld) {
@@ -160,6 +164,7 @@ public class RiverCrossing extends AppCompatActivity implements SensorEventListe
             if ((total_rot < 75) && (total_rot > -75))
                 matrix.preRotate((float) ((x_rot / 1.5) + rand_skew), pivotX, pivotY);
 
+            //this is where we set the actual rotated wagon
             wagon_img.setImageMatrix(matrix);
         }
         }
